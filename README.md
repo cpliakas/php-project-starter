@@ -9,7 +9,7 @@ can be up and running in seconds.
 ## Installation
 
 This project is most often used as a standalone application. Follow Composer's
-[Installation}(https://github.com/composer/composer/blob/master/doc/00-intro.md#installation---nix)
+[Installation](https://github.com/composer/composer/blob/master/doc/00-intro.md#installation---nix)
 and [Usage](https://github.com/composer/composer/blob/master/doc/00-intro.md#using-composer)
 guides to pull in the required dependencies.
 
