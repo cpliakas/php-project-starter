@@ -19,7 +19,6 @@
     "require-dev": {
         "satooshi/php-coveralls": "dev-master",
         "pdepend/pdepend": "~1.0",
-        "phpmd/phpmd" : "~1.4",
         "phploc/phploc": "~2.0",
         "phpunit/phpunit": "~3.0"
     },

@@ -6,7 +6,7 @@ PHP project more efficiently using common conventions. It also provides a
 command line tool that generates a skeleton project using the template so you
 can be up and running in seconds.
 
-# Installation
+## Installation
 
 This project is most often used as a standalone application. Follow Composer's
 [Installation}(https://github.com/composer/composer/blob/master/doc/00-intro.md#installation---nix)
@@ -27,25 +27,38 @@ by adding it as a dependency to your composer.json file.
 Please refer to [Composer's documentation](https://github.com/composer/composer/blob/master/doc/00-intro.md#introduction)
 for installation and usage instructions.
 
-# Tools and Services
+## Tools and Services
 
 Tools and services that this builder expects the PHP project being started to
 embrace.
 
+### Dependency Management
+
 * [Composer](http://getcomposer.org/)
+
+### Build & CI
+
 * [Apache Ant](http://ant.apache.org/)
 * [Jenkins](http://jenkins-ci.org/)
 * [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
+
+### Code Quality
+
 * [PHPLOC](https://github.com/sebastianbergmann/phploc)
 * [PHP Depend](http://pdepend.org/)
+
+### Services
+
 * [Travis CI](https://travis-ci.org/)
+* [Packagist](https://packagist.org/)
 * [Coveralls](https://coveralls.io/)
 * [GitHub](https://github.com/)
+* [Badge Poser](https://poser.pugx.org/)
 
-# Directory structure
+## Directory Structure
 
 @todo
 
-# Command Line
+## Command Line
 
 @todo
