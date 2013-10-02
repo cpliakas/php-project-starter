@@ -1,0 +1,31 @@
+{
+    "name": "cpliakas/php-project-starter",
+    "type": "library",
+    "description": "Provides an opinionated template outlining directory structure, dotfiles, build systems, and services connections that can be used to start a PHP project more efficiently using common conventions.",
+    "keywords": ["php"],
+    "homepage": "https://github.com/cpliakas/php-project-starter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Pliakas",
+            "email": "opensource@chrispliakas.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/console": "~2.0",
+        "symfony/filesystem": "~2.0"
+    },
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master",
+        "pdepend/pdepend": "~1.0",
+        "phpmd/phpmd" : "~1.4",
+        "phploc/phploc": "~2.0",
+        "phpunit/phpunit": "~3.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "ProjectStarter": "src/"
+        }
+    }
+}
