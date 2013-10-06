@@ -58,6 +58,7 @@ embrace.
 ### Conventions
 
 * [Template for Jenkins Jobs for PHP Projects](http://jenkins-php.org/)
+* [PHP Standards Recommendations (PSR)](http://www.php-fig.org/)
 
 ## Directory Structure
 
