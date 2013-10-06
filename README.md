@@ -38,9 +38,10 @@ embrace.
 
 ### Build & CI
 
+* [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
 * [Apache Ant](http://ant.apache.org/)
 * [Jenkins](http://jenkins-ci.org/)
-* [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
+* [Travis CI](https://travis-ci.org/)
 
 ### Code Quality
 
@@ -49,11 +50,14 @@ embrace.
 
 ### Services
 
-* [Travis CI](https://travis-ci.org/)
+* [GitHub](https://github.com/)
 * [Packagist](https://packagist.org/)
 * [Coveralls](https://coveralls.io/)
-* [GitHub](https://github.com/)
 * [Badge Poser](https://poser.pugx.org/)
+
+### Conventions
+
+* [Template for Jenkins Jobs for PHP Projects](http://jenkins-php.org/)
 
 ## Directory Structure
 
