@@ -12,15 +12,18 @@ can be up and running in seconds.
 
 ## Manually Starting From The Template
 
-* Initialize your new project's repository `mkdir myproj && cd myproj && git init`
-* Pull in the template by running the following Git commands:
+* Initialize your new project's repository:
+  * `mkdir myproj`: Creates a directory for your project
+  * `cd myproj`: Changes the current working directory to your project
+  * `git init`: Sets up the necessary Git files
+* Pull in the template:
   * `git remote add starter https://github.com/cpliakas/php-project-starter`
   * `git filter-branch --prune-empty --subdirectory-filter template starter`
-* Replace the following template variables:
+* Replace the template variables:
   * `{{ project.name }}`: The project's name in `vendor/project` format
   * `{{ project.label }}`: The project's display name, e.g. `My Project`
   * `{{ project.description }}`: The project's longer description
-  * `{{ project.namespace }}`: PHP namespace for PSR-0 autoloading, e.g. `MyProject`, `SubProject\\MyComponent`
+  * `{{ project.namespace }}`: PSR-0 namespace, e.g. `MyProject`, `SubProject\\MyComponent`
   * `{{ copyright.year }}`: Usually the current year or range of years
   * `{{ copyright.holders }}`: Usually the vendor's real name
 
