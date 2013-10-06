@@ -6,6 +6,24 @@ PHP project more efficiently using common conventions. It also provides a
 command line tool that generates a skeleton project using the template so you
 can be up and running in seconds.
 
+## Starting From The Command Line Tool (Recommended)
+
+@todo
+
+## Manually Starting From The Template
+
+* Initialize your new project's repository `mkdir myproj && cd myproj && git init`
+* Pull in the template by running the following Git commands:
+  * `git remote add starter https://github.com/cpliakas/php-project-starter`
+  * `git filter-branch --prune-empty --subdirectory-filter template starter`
+* Replace the following template variables:
+  * `{{ project.name }}`: The project's name in `vendor/project` format
+  * `{{ project.label }}`: The project's display name, e.g. `My Project`
+  * `{{ project.description }}`: The project's longer description
+  * `{{ project.namespace }}`: PHP namespace for PSR-0 autoloading, e.g. `MyProject`, `SubProject\\MyComponent`
+  * `{{ copyright.year }}`: Usually the current year or range of years
+  * `{{ copyright.holders }}`: Usually the vendor's real name
+
 ## Tools and Conventions
 
 Tools and services that this builder expects the PHP project being started to
@@ -46,24 +64,3 @@ embrace.
 ## Command Line
 
 @todo
-
-### Installation
-
-This project is most often used as a standalone application. Follow Composer's
-[Installation](https://github.com/composer/composer/blob/master/doc/00-intro.md#installation---nix)
-and [Usage](https://github.com/composer/composer/blob/master/doc/00-intro.md#using-composer)
-guides to pull in the required dependencies.
-
-Otherwise this library can be installed with [Composer](http://getcomposer.org/)
-by adding it as a dependency to your composer.json file.
-
-```json
-{
-    "require": {
-        "cpliakas/php-project-starter": "*"
-    }
-}
-```
-
-Please refer to [Composer's documentation](https://github.com/composer/composer/blob/master/doc/00-intro.md#introduction)
-for installation and usage instructions.
