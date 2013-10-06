@@ -6,7 +6,7 @@ PHP project more efficiently using common conventions. It also provides a
 command line tool that generates a skeleton project using the template so you
 can be up and running in seconds.
 
-## Starting From The Command Line Tool (Recommended)
+## Using The CLI Tool (Recommended)
 
 @todo
 
