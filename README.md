@@ -3,8 +3,8 @@
 This application provides an opinionated template outlining directory structure,
 dotfiles, build systems, and services connections that can be used to start a
 PHP project more efficiently using common conventions. It also provides a
-command line tool that generates a skeleton project using the template so you
-can be up and running in seconds.
+command line tool that generates a skeleton project from the template so you
+can be up and running with your new project in seconds.
 
 ## Using The CLI Tool (Recommended)
 
@@ -29,8 +29,8 @@ can be up and running in seconds.
 
 ## Tools and Conventions
 
-Tools and services that this builder expects the PHP project being started to
-embrace.
+Tools and conventions that this template expects the PHP project being started
+to embrace.
 
 ### Dependency Management
 
@@ -61,9 +61,5 @@ embrace.
 * [PHP Standards Recommendations (PSR)](http://www.php-fig.org/)
 
 ## Directory Structure
-
-@todo
-
-## Command Line
 
 @todo
