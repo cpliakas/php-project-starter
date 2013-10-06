@@ -1,7 +1,7 @@
 {
     "name": "cpliakas/php-project-starter",
     "type": "library",
-    "description": "Provides an opinionated template outlining directory structure, dotfiles, build systems, and services connections that can be used to start a PHP project more efficiently using common conventions.",
+    "description": "An opinionated template and CLI application that makes it easy to start a PHP project using best practice tools and conventions.",
     "keywords": ["php"],
     "homepage": "https://github.com/cpliakas/php-project-starter",
     "license": "MIT",
