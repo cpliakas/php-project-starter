@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="{{ project.label }}" default="build">
 
+  <property name="builddir" value="${basedir}/build"/>
+
   <target name="build" depends="composer,pdepend,phploc,phpunit"/>
 
   <target name="clean" description="Cleanup build artifacts">
+    <delete dir="${builddir}/coverage"/>
+    <delete dir="${builddir}/logs"/>
+    <delete dir="${builddir}/pdepend"/>
+    <delete dir="${builddir}/test"/>
     <delete file="${basedir}/composer.lock"/>
-    <delete file="${basedir}/build/composer.phar"/>
-    <delete dir="${basedir}/build/coverage"/>
-    <delete dir="${basedir}/build/logs"/>
-    <delete dir="${basedir}/build/pdepend"/>
-    <delete dir="${basedir}/build/test"/>
+    <delete file="${basedir}/composer.phar"/>
     <delete file="${basedir}/vendor"/>
   </target>
 
   <target name="prepare">
-    <mkdir dir="${basedir}/build/coverage"/>
-    <mkdir dir="${basedir}/build/logs"/>
-    <mkdir dir="${basedir}/build/pdepend"/>
-    <mkdir dir="${basedir}/build/test"/>
+    <mkdir dir="${builddir}/coverage"/>
+    <mkdir dir="${builddir}/logs"/>
+    <mkdir dir="${builddir}/pdepend"/>
+    <mkdir dir="${builddir}/test"/>
   </target>
 
   <target name="composer-check" depends="prepare">
-    <available file="${basedir}/build/composer.phar" property="composer.present"/>
+    <available file="${basedir}/composer.phar" property="composer.present"/>
   </target>
 
   <target name="composer-download" unless="composer.present">
-    <get src="https://getcomposer.org/composer.phar" dest="${basedir}/build/composer.phar"/>
+    <get src="https://getcomposer.org/composer.phar" dest="${basedir}/composer.phar"/>
   </target>
 
-  <target name="composer" depends="composer-check,composer-download" description="Run composer update">
+  <target name="composer" depends="composer-check,composer-download" unless="composer.noupdate" description="Run composer update">
     <exec executable="php">
-      <arg value="${basedir}/build/composer.phar"/>
+      <arg value="${basedir}/composer.phar"/>
       <arg value="update"/>
     </exec>
   </target>
@@ -38,16 +40,16 @@
   <target name="phploc" depends="composer" description="Measure project size using PHPLOC">
     <exec executable="${basedir}/vendor/bin/phploc">
       <arg value="--log-csv" />
-      <arg value="${basedir}/build/logs/phploc.csv" />
+      <arg value="${builddir}/logs/phploc.csv" />
       <arg path="${basedir}/src" />
     </exec>
   </target>
 
   <target name="pdepend" depends="composer" description="Calculate software metrics using PHP_Depend">
     <exec executable="${basedir}/vendor/bin/pdepend">
-      <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
-      <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
-      <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
+      <arg value="--jdepend-xml=${builddir}/logs/jdepend.xml" />
+      <arg value="--jdepend-chart=${builddir}/pdepend/dependencies.svg" />
+      <arg value="--overview-pyramid=${builddir}/pdepend/overview-pyramid.svg" />
       <arg path="${basedir}/src" />
     </exec>
   </target>
