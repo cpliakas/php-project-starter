@@ -27,7 +27,7 @@ can be up and running with your new project in seconds.
   * `{{ copyright.year }}`: Usually the current year or range of years
   * `{{ copyright.holders }}`: Usually the vendor's real name
 
-## Tools and Conventions
+## Tools And Conventions
 
 Tools and conventions that this template expects the PHP project being started
 to embrace.
@@ -59,6 +59,7 @@ to embrace.
 
 * [Template for Jenkins Jobs for PHP Projects](http://jenkins-php.org/)
 * [PHP Standards Recommendations (PSR)](http://www.php-fig.org/)
+* [The MIT License (MIT)](http://opensource.org/licenses/MIT)
 
 ## Directory Structure
 
