@@ -24,16 +24,16 @@
   </target>
 
   <target name="composer-check" depends="prepare">
-    <available file="${basedir}/composer.phar" property="composer.present"/>
+    <available file="${builddir}/composer.phar" property="composer.present"/>
   </target>
 
   <target name="composer-download" unless="composer.present">
-    <get src="https://getcomposer.org/composer.phar" dest="${basedir}/composer.phar"/>
+    <get src="https://getcomposer.org/composer.phar" dest="${builddir}/composer.phar"/>
   </target>
 
   <target name="composer" depends="composer-check,composer-download" unless="composer.noupdate" description="Run composer update">
     <exec executable="php">
-      <arg value="${basedir}/composer.phar"/>
+      <arg value="${builddir}/composer.phar"/>
       <arg value="update"/>
     </exec>
   </target>
