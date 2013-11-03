@@ -63,4 +63,16 @@ to embrace.
 
 ## Directory Structure
 
-@todo
+```
+.
+|-- src/
+|-- test/
+|-- .coveralls.yml
+|-- .editorconfig
+|-- .gitignore
+|-- .travis.yml
+|-- .README.md
+|-- build.xml
+|-- composer.json
+
+```
