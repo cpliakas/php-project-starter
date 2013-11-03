@@ -6,14 +6,15 @@
   <target name="build" depends="composer,pdepend,phploc,phpunit"/>
 
   <target name="clean" description="Cleanup build artifacts">
-    <delete dir="${builddir}/coverage"/>
-    <delete dir="${builddir}/logs"/>
-    <delete dir="${builddir}/pdepend"/>
-    <delete dir="${builddir}/test"/>
-    <delete file="${basedir}/composer.lock"/>
-    <delete file="${basedir}/composer.phar"/>
-    <delete file="${basedir}/vendor"/>
+    <delete dir="${builddir}"/>
   </target>
+
+  <target name="clean-src" description="Cleanup dependency source code">
+    <delete file="${basedir}/composer.lock"/>
+    <delete dir="${basedir}/vendor"/>
+  </target>
+
+  <target name="clean-all" depends="clean,clean-src" description="Cleanup build artifacts and dependency source code"/>
 
   <target name="prepare">
     <mkdir dir="${builddir}/coverage"/>
