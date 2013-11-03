@@ -22,37 +22,37 @@ class StartCommand extends Command
             )
             ->addOption(
                'name',
-               null,
+                null,
                InputOption::VALUE_REQUIRED,
                'The project\'s name in vendor/project format'
             )
             ->addOption(
                'label',
-               null,
+                null,
                InputOption::VALUE_REQUIRED,
                'The project\'s display name, e.g. "My Project"'
             )
             ->addOption(
                'description',
-               null,
+                null,
                InputOption::VALUE_REQUIRED,
                'The project\'s longer description'
             )
             ->addOption(
                'namespace',
-               null,
+                null,
                InputOption::VALUE_REQUIRED,
                'PSR-0 namespace, e.g. MyProject, SubProject\\MyComponent'
             )
             ->addOption(
                'copyright-year',
-               null,
+                null,
                InputOption::VALUE_REQUIRED,
                'Usually the current year or range of years'
             )
             ->addOption(
                'copyright-holders',
-               null,
+                null,
                InputOption::VALUE_REQUIRED,
                'Usually the vendor\'s real name'
             )
