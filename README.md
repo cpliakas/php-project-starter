@@ -71,8 +71,9 @@ to embrace.
 |-- .editorconfig
 |-- .gitignore
 |-- .travis.yml
-|-- .README.md
 |-- build.xml
-`-- composer.json
+|-- composer.json
+|-- LICENSE
+`-- README.md
 
 ```
