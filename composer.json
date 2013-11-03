@@ -17,14 +17,15 @@
         "symfony/filesystem": "~2.0"
     },
     "require-dev": {
-        "satooshi/php-coveralls": "dev-master",
         "pdepend/pdepend": "~1.0",
         "phploc/phploc": "~2.0",
-        "phpunit/phpunit": "~3.0"
+        "phpunit/phpunit": "~3.0",
+        "satooshi/php-coveralls": "*"
     },
     "autoload": {
         "psr-0": {
-            "ProjectStarter": "src/"
+            "PhpProject": "src/"
         }
-    }
+    },
+    "bin": ["bin/php-project.php", "bin/php-project"]
 }

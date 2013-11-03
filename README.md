@@ -19,7 +19,7 @@ can be up and running with your new project in seconds.
 * Pull in the template:
   * `git remote add starter https://github.com/cpliakas/php-project-starter`
   * `git filter-branch --prune-empty --subdirectory-filter template starter`
-* Replace the template variables:
+* Replace the template variables in each file:
   * `{{ project.name }}`: The project's name in `vendor/project` format
   * `{{ project.label }}`: The project's display name, e.g. `My Project`
   * `{{ project.description }}`: The project's longer description
@@ -73,6 +73,6 @@ to embrace.
 |-- .travis.yml
 |-- .README.md
 |-- build.xml
-|-- composer.json
+`-- composer.json
 
 ```

@@ -1,0 +1,4 @@
+#!/usr/bin/env php
+<?php
+
+require 'php-project.php';
