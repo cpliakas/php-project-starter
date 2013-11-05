@@ -7,6 +7,23 @@ use Symfony\Component\Console\Input\InputInterface;
 
 class PhpProjectApplication extends Application
 {
+    /**
+     * @var \Symfony\Component\Filesystem\Filesystem
+     */
+    protected $fs;
+
+    /**
+     * @var \GitWrapper\GitWrapper
+     */
+    protected $wrapper;
+
+    public function __construct(Filesystem $fs, GitWrapper $wrapper, $name = 'UNKNOWN', $version = 'UNKNOWN')
+    {
+        $this->fs = $fs;
+        $this->wrapper = $wrapper;
+        parent::__construct($name, $version);
+    }
+
     protected function getCommandName(InputInterface $input)
     {
         return 'start';
@@ -15,7 +32,7 @@ class PhpProjectApplication extends Application
     protected function getDefaultCommands()
     {
         $defaultCommands = parent::getDefaultCommands();
-        $defaultCommands[] = new StartCommand();
+        $defaultCommands[] = new StartCommand($this->fs, $this->wrapper);
         return $defaultCommands;
     }
 
