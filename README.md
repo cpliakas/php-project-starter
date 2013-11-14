@@ -26,7 +26,7 @@ can be up and running with your new project in seconds.
   * `{{ project.namespace }}`: PSR-0 namespace, e.g. `MyProject`, `SubProject\\MyComponent`
   * `{{ copyright.year }}`: Usually the current year or range of years
   * `{{ copyright.holders }}`: Usually the vendor's real name
-* [Create repository](https://help.github.com/articles/create-a-repo) on GitHub, push code
+* [Make a new repository](https://help.github.com/articles/create-a-repo#make-a-new-repository-on-github) on GitHub matching the `{{ project.name }}`, push code
   * `git push -u origin master`
 * Configure third party services
   * Packagist: Follow the [Publish It](https://packagist.org/) section
