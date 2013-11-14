@@ -26,6 +26,12 @@ can be up and running with your new project in seconds.
   * `{{ project.namespace }}`: PSR-0 namespace, e.g. `MyProject`, `SubProject\\MyComponent`
   * `{{ copyright.year }}`: Usually the current year or range of years
   * `{{ copyright.holders }}`: Usually the vendor's real name
+* [Create repository](https://help.github.com/articles/create-a-repo) on GitHub, push code
+  * `git push -u origin master`
+* Configure third party services
+  * Packagist: Follow the [Publish It](https://packagist.org/) section
+  * Travis CI: Follow steps one and two of the [Getting Started](http://about.travis-ci.org/docs/user/getting-started/#Step-one%3A-Sign-in) documentation
+  * Coveralls: Follow the [Getting Started](https://coveralls.io/docs) documentation
 
 ## Tools And Conventions
 
