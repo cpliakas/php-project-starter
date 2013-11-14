@@ -8,7 +8,19 @@ can be up and running with your new project in seconds.
 
 ## Using The CLI Tool (Recommended)
 
-@todo
+* Download PHP Project Starter with Composer
+  * `mkdir php-project-starter && cd php-project-starter`
+  * `curl -sS https://getcomposer.org/installer | php`
+  * `php composer.phar require cpliakas/php-project-starter:*`
+* Create the project
+  * `vendor/bin/php-project --label="My Project" --copyright-holders="Chris Pliakas" cpliakas/my-project ../path/to/working-copy`
+* [Make a new repository](https://help.github.com/articles/create-a-repo#make-a-new-repository-on-github) on GitHub matching the `{{ project.name }}`, push code
+  * `cd ../path/to/working-copy`
+  * `git push -u origin master`
+* Configure third party services
+  * Packagist: Follow the [Publish It](https://packagist.org/) section
+  * Travis CI: Follow steps one and two of the [Getting Started](http://about.travis-ci.org/docs/user/getting-started/#Step-one%3A-Sign-in) documentation
+  * Coveralls: Follow the [Getting Started](https://coveralls.io/docs) documentation
 
 ## Manually Starting From The Template
 
