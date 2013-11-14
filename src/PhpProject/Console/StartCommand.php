@@ -123,7 +123,7 @@ class StartCommand extends Command
 
         $git = $wrapper->init($dir);
 
-        $srcDir = $dir . '/src/' . str_replace('\\', '/', $ns);
+        $srcDir = str_replace('\\', '/', $ns);
         $this->fs->mkdir($dir . '/src/' . $srcDir, 0755);
         $this->fs->mkdir($dir . '/test/' . $srcDir . '/Test', 0755);
 
