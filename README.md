@@ -73,6 +73,7 @@ to embrace.
 |-- .travis.yml
 |-- build.xml
 |-- composer.json
+|-- phpunit.xml
 |-- LICENSE
 `-- README.md
 
