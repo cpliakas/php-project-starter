@@ -22,6 +22,9 @@ can be up and running with your new project in seconds.
   * Travis CI: Follow steps one and two of the [Getting Started](http://about.travis-ci.org/docs/user/getting-started/#Step-one%3A-Sign-in) documentation
   * Coveralls: Follow the [Getting Started](https://coveralls.io/docs) documentation
 
+Run `vendor/bin/php-project --help` to see all options supported by the command
+line tool.
+
 ## Manually Starting From The Template
 
 * Initialize your new project's repository:
