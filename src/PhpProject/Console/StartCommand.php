@@ -117,14 +117,23 @@ class StartCommand extends Command
             'README.md',
             'build.xml',
             'composer.json',
+            'phpunit.xml',
+            'test/bootstrap.php',
         );
 
         $git = $wrapper->init($dir);
+
+        $srcDir = $dir . '/src/' . str_replace('\\', '/', $ns);
+        $this->fs->mkdir($dir . '/src/' . $srcDir, 0755);
+        $this->fs->mkdir($dir . '/test/' . $srcDir . '/Test', 0755);
+
         foreach ($filenames as $filename) {
             $this->copy($filename, $dir, $replacements);
             $git->add($filename);
         }
+
         $git->commit('Initial commit.');
+        $git->remote('add', 'origin', 'git@github.com:' . $projectName . '.git');
     }
 
     /**
