@@ -3,14 +3,12 @@
 namespace PhpProject\Console;
 
 use GitWrapper\GitWrapper;
-use GitWrapper\GitException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Exception\IOException;
 
 class StartCommand extends Command
 {
@@ -21,15 +19,9 @@ class StartCommand extends Command
      */
     protected $fs;
 
-    /**
-     * @var \GitWrapper\GitWrapper
-     */
-    protected $wrapper;
-
-    public function __construct(Filesystem $fs, GitWrapper $wrapper, $name = null)
+    public function __construct(Filesystem $fs, $name = null)
     {
         $this->fs = $fs;
-        $this->wrapper = $wrapper;
         parent::__construct($name);
     }
 
@@ -78,36 +70,106 @@ class StartCommand extends Command
                InputOption::VALUE_REQUIRED,
                'Usually the vendor\'s real name, defaults to the Git\'s "user.name" configuration'
             )
+            ->addOption(
+               'git-binary',
+                null,
+               InputOption::VALUE_REQUIRED,
+               'The path to the Git binary'
+            )
         ;
     }
 
+    /**
+     * @{inheritdoc}
+     *
+     * @throws \RuntimeException
+     * @throws \GitWrapper\GitException
+     * @throws \Symfony\Component\Filesystem\Exception\IOException
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $projectName = $input->getArgument('project-name');
         list($vendor, $name) = $this->parseProjectName($projectName);
 
-        $dir   = $input->getArgument('directory') ?: './' . $name;
-        $label = $input->getOption('label') ?: $name;
-        $desc  = $input->getOption('description') ?: '';
-        $year  = $input->getOption('copyright-year') ?: date('Y');
-        $copy  = $this->getCopyrightHoldersOption($input->getOption('copyright-holders'));
-        $ns    = $this->getNamespaceOption($input->getOption('namespace'), $name);
+        $wrapper = new GitWrapper($input->getOption('git-binary'));
+        $dir     = $input->getArgument('directory') ?: './' . $name;
+        $label   = $input->getOption('label') ?: $name;
+        $desc    = $input->getOption('description') ?: '';
+        $year    = $input->getOption('copyright-year') ?: date('Y');
+        $copy    = $this->getCopyrightHoldersOption($wrapper, $input->getOption('copyright-holders'));
+        $ns      = $this->getNamespaceOption($input->getOption('namespace'), $name);
 
+        $replacements = array(
+          '{{ project.name }}'        => $projectName,
+          '{{ project.label }}'       => $label,
+          '{{ project.description }}' => $desc,
+          '{{ project.namespace }}'   => $ns,
+          '{{ copyright.year }}'      => $year,
+          '{{ copyright.holders }}'   => $copy,
+        );
+
+        $filenames = array(
+            '.coveralls.yml',
+            '.editorconfig',
+            '.gitignore',
+            '.travis.yml',
+            'LICENSE',
+            'README.md',
+            'build.xml',
+            'composer.json',
+        );
+
+        $git = $wrapper->init($dir);
+        foreach ($filenames as $filename) {
+            $this->copy($filename, $dir, $replacements);
+            $git->add($filename);
+        }
+        $git->commit('Initial commit.');
+    }
+
+    /**
+     * @param string $dir
+     *
+     * @throws \RuntimeException
+     * @throws \Symfony\Component\Filesystem\Exception\IOException
+     */
+    public function mkdir($dir)
+    {
         if (!$this->fs->exists($dir)) {
             $this->fs->mkdir($dir, 0755);
         } else {
             throw new \RuntimeException('Directory exists: ' . $dir);
         }
-
     }
 
     /**
-     * @param \Symfony\Component\Filesystem\Filesystem $fs
+     * Copies a file from the template to the destination directory, replacing
+     * all of the template variables.
+     *
+     * @param string $filename
      * @param string $dir
+     * @param array $replacements
+     *
+     * @throws \RuntimeException
+     * @throws \Symfony\Component\Filesystem\Exception\IOException
      */
-    public function mkdir(Filesystem $fs, $dir)
+    public function copy($filename, $dir, array $replacements = array())
     {
+        if (!$filepath = realpath(__DIR__ . '/../../../template/' . $filename)) {
+            throw new \RuntimeException('File not found: ' . $filename);
+        }
 
+        // Replace the variables in the template.
+        $search = array_keys($replacements);
+        $replace = array_values($replacements);
+        $subject = file_get_contents($filepath);
+        $filedata = str_replace($search, $replace, $subject);
+
+        // Write the file.
+        $target = $dir . '/' . $filename;
+        $this->fs->touch($target);
+        $this->fs->chmod($target, 0644);
+        file_put_contents($target, $filedata);
     }
 
     /**
@@ -132,16 +194,17 @@ class StartCommand extends Command
      * Default to Git's "user.name" configuration if the "copyright-holders"
      * option wasn't passed.
      *
+     * @param \GitWrapper\GitWrapper $wrapper
      * @param string|null $option
      *
      * @return string
      *
      * @throws \GitWrapper\GitException;
      */
-    public function getCopyrightHoldersOption($option)
+    public function getCopyrightHoldersOption(GitWrapper $wrapper, $option)
     {
         if (!$option) {
-            $option = rtrim($this->wrapper->git('config --get --global user.name'));
+            $option = rtrim($wrapper->git('config --get --global user.name'));
         }
         return $option;
     }

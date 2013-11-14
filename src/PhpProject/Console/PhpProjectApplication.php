@@ -2,8 +2,10 @@
 
 namespace PhpProject\Console;
 
+use GitWrapper\GitWrapper;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class PhpProjectApplication extends Application
 {
@@ -12,15 +14,9 @@ class PhpProjectApplication extends Application
      */
     protected $fs;
 
-    /**
-     * @var \GitWrapper\GitWrapper
-     */
-    protected $wrapper;
-
-    public function __construct(Filesystem $fs, GitWrapper $wrapper, $name = 'UNKNOWN', $version = 'UNKNOWN')
+    public function __construct(Filesystem $fs, $name = 'UNKNOWN', $version = 'UNKNOWN')
     {
         $this->fs = $fs;
-        $this->wrapper = $wrapper;
         parent::__construct($name, $version);
     }
 
@@ -32,7 +28,7 @@ class PhpProjectApplication extends Application
     protected function getDefaultCommands()
     {
         $defaultCommands = parent::getDefaultCommands();
-        $defaultCommands[] = new StartCommand($this->fs, $this->wrapper);
+        $defaultCommands[] = new StartCommand($this->fs);
         return $defaultCommands;
     }
 

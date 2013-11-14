@@ -1,6 +1,5 @@
 <?php
 
-use GitWrapper\GitWrapper;
 use PhpProject\Console\PhpProjectApplication;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -11,5 +10,5 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     require __DIR__ . '/../../../autoload.php';
 }
 
-$application = new PhpProjectApplication(new Filesystem(), new GitWrapper());
+$application = new PhpProjectApplication(new Filesystem());
 $application->run();
