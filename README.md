@@ -53,8 +53,18 @@ git push -u origin master
 #### Run The Project Tests And Generate Code Metrics
 
 Running `ant` in the project's root directory will download Composer, install
-development dependencies, run phpunit, and generate artifacts in the `build`
+development dependencies, run PHPUnit, and generate artifacts in the `build`
 directory from the `phploc` and `pdepend` tools.
+
+The main targets can be found by running `ant -p` and are listed below:
+
+* `clean`: Cleanup build artifacts
+* `clean-src`: Cleanup dependency source code
+* `clean-all`: Cleanup build artifacts and dependency source code
+* `composer`: Run composer update
+* `pdepend`: Calculate software metrics using PHP_Depend
+* `phploc`: Measure project size using PHPLOC
+* `phpunit`: Run unit tests with PHPUnit
 
 ## Tools And Conventions
 
