@@ -50,11 +50,11 @@ git push -u origin master
   * Travis CI: Follow steps one and two of the [Getting Started](http://about.travis-ci.org/docs/user/getting-started/#Step-one%3A-Sign-in) documentation
   * Coveralls: Follow the [Getting Started](https://coveralls.io/docs) documentation
 
-#### Run The Project Tests And Generate Code Metrics
+#### Using Apache Ant
 
 Running `ant` in the project's root directory will download Composer, install
-development dependencies, run PHPUnit, and generate artifacts in the `build`
-directory from the `phploc` and `pdepend` tools.
+development dependencies, run PHPUnit, and generate a code coverage report and
+software metrics in the `./build` directory.
 
 The main targets can be found by running `ant -p` and are listed below:
 
