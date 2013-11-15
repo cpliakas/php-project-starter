@@ -30,7 +30,7 @@ vendor/bin/php-project \
   --description="A longer description for My Project" \
   --namespace="My\Project" \
   cpliakas/my-project \
-  ../path/to/working-copy
+  /path/to/working-copy
 ```
 
 #### Make A Repository On GitHub
@@ -45,9 +45,16 @@ git push -u origin master
 ```
 
 #### Configure Other Services
+
   * Packagist: Follow the [Publish It](https://packagist.org/) section
   * Travis CI: Follow steps one and two of the [Getting Started](http://about.travis-ci.org/docs/user/getting-started/#Step-one%3A-Sign-in) documentation
   * Coveralls: Follow the [Getting Started](https://coveralls.io/docs) documentation
+
+#### Run The Project Tests And Generate Code Metrics
+
+Running `ant` in the project's root directory will download Composer, install
+development dependencies, run phpunit, and generate artifacts in the `build`
+directory from the `phploc` and `pdepend` tools.
 
 ## Tools And Conventions
 
