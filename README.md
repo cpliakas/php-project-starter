@@ -37,7 +37,7 @@ vendor/bin/php-project \
 
 [Make a new repository](https://help.github.com/articles/create-a-repo#make-a-new-repository-on-github)
 matching the project name (e.g. `cpliakas/my-project`) and push your code. Note
-that the remote repository is already set.
+that the `origin` remote is already set in the repository.
 
 ```
 cd ../path/to/working-copy
