@@ -86,6 +86,7 @@ to embrace.
 
 * [PHPLOC](https://github.com/sebastianbergmann/phploc)
 * [PHP Depend](http://pdepend.org/)
+* [PHPMD](http://phpmd.org/)
 
 ### Services
 
