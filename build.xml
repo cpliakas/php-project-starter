@@ -3,7 +3,7 @@
 
   <property name="builddir" value="${basedir}/build"/>
 
-  <target name="build" depends="composer,pdepend,phploc,phpunit"/>
+  <target name="build" depends="lint,composer,pdepend,phploc,phpunit"/>
 
   <target name="clean" description="Cleanup build artifacts">
     <delete dir="${builddir}"/>
@@ -21,6 +21,22 @@
     <mkdir dir="${builddir}/logs"/>
     <mkdir dir="${builddir}/pdepend"/>
     <mkdir dir="${builddir}/test"/>
+  </target>
+
+  <target name="lint" description="Perform syntax check of sourcecode files">
+    <apply executable="php" failonerror="true">
+      <arg value="-l" />
+
+      <fileset dir="${basedir}/src">
+        <include name="**/*.php" />
+        <modified />
+      </fileset>
+
+      <fileset dir="${basedir}/test">
+        <include name="**/*.php" />
+        <modified />
+      </fileset>
+    </apply>
   </target>
 
   <target name="composer-check" depends="prepare">
