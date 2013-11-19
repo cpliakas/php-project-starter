@@ -64,6 +64,7 @@ The main targets can be found by running `ant -p` and are listed below:
 * `composer`: Run composer update
 * `lint`: Perform syntax check of sourcecode files
 * `pdepend`: Calculate software metrics using PHP_Depend
+* `phpcpd`: Find duplicate code using PHPCPD
 * `phploc`: Measure project size using PHPLOC
 * `phpmd`: Perform mess detection using PHPMD, print human readable output.
 * `phpmd-ci`: Perform mess detection using PHPMD, creating a log file for the CI server
