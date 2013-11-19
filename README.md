@@ -62,8 +62,11 @@ The main targets can be found by running `ant -p` and are listed below:
 * `clean-src`: Cleanup dependency source code
 * `clean-all`: Cleanup build artifacts and dependency source code
 * `composer`: Run composer update
+* `lint`: Perform syntax check of sourcecode files
 * `pdepend`: Calculate software metrics using PHP_Depend
 * `phploc`: Measure project size using PHPLOC
+* `phpmd`: Perform mess detection using PHPMD, print human readable output.
+* `phpmd-ci`: Perform mess detection using PHPMD, creating a log file for the CI server
 * `phpunit`: Run unit tests with PHPUnit
 
 ## Tools And Conventions

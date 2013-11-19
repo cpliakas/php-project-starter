@@ -117,6 +117,7 @@ class StartCommand extends Command
             'README.md',
             'build.xml',
             'composer.json',
+            'phpmd.xml',
             'phpunit.xml',
             'test/bootstrap.php',
         );
