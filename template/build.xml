@@ -3,7 +3,7 @@
 
   <property name="builddir" value="${basedir}/build"/>
 
-  <target name="build" depends="composer,pdepend,phploc,phpunit"/>
+  <target name="build" depends="lint,composer,phploc,pdepend,phpmd-ci,phpcpd,phpunit"/>
 
   <target name="clean" description="Cleanup build artifacts">
     <delete dir="${builddir}"/>
