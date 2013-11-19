@@ -90,6 +90,14 @@
     </exec>
   </target>
 
+  <target name="phpcpd" description="Find duplicate code using PHPCPD">
+    <exec executable="${basedir}/vendor/bin/phpcpd">
+      <arg value="--log-pmd" />
+      <arg value="${basedir}/build/logs/pmd-cpd.xml" />
+      <arg path="${basedir}/src" />
+    </exec>
+  </target>
+
   <target name="phpunit" depends="composer" description="Run unit tests with PHPUnit">
     <exec executable="${basedir}/vendor/bin/phpunit" failonerror="true"/>
   </target>

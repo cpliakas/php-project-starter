@@ -90,6 +90,7 @@ to embrace.
 * [PHPLOC](https://github.com/sebastianbergmann/phploc)
 * [PHP Depend](http://pdepend.org/)
 * [PHPMD](http://phpmd.org/)
+* [PHPCPD](https://github.com/sebastianbergmann/phpcpd)
 
 ### Services
 
@@ -116,6 +117,7 @@ to embrace.
 |-- .travis.yml
 |-- build.xml
 |-- composer.json
+|-- phpmd.xml
 |-- phpunit.xml
 |-- LICENSE
 `-- README.md
