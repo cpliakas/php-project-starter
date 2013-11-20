@@ -131,7 +131,7 @@ to embrace.
 
 ```
 .
-|-- build/
+`-- build/
     |-- coverage/
     |   `--index.html
     |-- logs/
