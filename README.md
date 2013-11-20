@@ -108,6 +108,8 @@ to embrace.
 
 ## Directory Structure
 
+### PHP Project
+
 ```
 .
 |-- src/
@@ -123,4 +125,24 @@ to embrace.
 |-- LICENSE
 `-- README.md
 
+```
+
+### Build Artifacts
+
+```
+.
+|-- build/
+|   |-- coverage/
+|   |   `--index.html
+|   |-- logs/
+|   |   |-- clover.xml
+|   |   |-- jdepend.xml
+|   |   |-- junit.xml
+|   |   |-- phploc.csv
+|   |   `-- pmd.xml
+|   |-- pdepend/
+|   |   |-- dependencies.svg
+|   |   `-- overview-pyramid.svg
+|   `-- composer.phar
+`-- cache.properties
 ```
