@@ -2,7 +2,6 @@
 
 namespace PhpProject\Console;
 
-use GitWrapper\GitWrapper;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Filesystem\Filesystem;
