@@ -3,6 +3,7 @@
 namespace PhpProject\Console;
 
 use GitWrapper\GitWrapper;
+use Guzzle\Http\Client;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -76,6 +77,18 @@ class StartCommand extends Command
                InputOption::VALUE_REQUIRED,
                'The path to the Git binary'
             )
+            ->addOption(
+               'jenkins-url',
+                null,
+               InputOption::VALUE_REQUIRED,
+               'The URL of the Jenkins server that the job will be created on'
+            )
+            ->addOption(
+               'no-ssl-verification',
+                null,
+               InputOption::VALUE_NONE,
+               'If set, SSL verification will be skipped'
+            )
         ;
     }
 
@@ -122,6 +135,8 @@ class StartCommand extends Command
             'test/bootstrap.php',
         );
 
+
+        // Create the project skeleton.
         $git = $wrapper->init($dir);
 
         $srcDir = str_replace('\\', '/', $ns);
@@ -135,6 +150,24 @@ class StartCommand extends Command
 
         $git->commit('Initial commit.');
         $git->remote('add', 'origin', 'git@github.com:' . $projectName . '.git');
+
+
+        // Create the Jenkins job if a URL is passed.
+        if ($jenkinsUrl = $input->getOption('jenkins-url')) {
+
+            $client = new Client($jenkinsUrl);
+            if ($input->getOption('no-ssl-verification')) {
+                $client->setSslVerification(false, false);
+            }
+
+            $configXml = file_get_contents(realpath(__DIR__ . '/../../../jenkins/config.xml'));
+            $job = str_replace('{{ project.name }}', $projectName, $configXml);
+
+            $headers = array('Content-Type' => 'text/xml');
+            $client->post($jenkinsUrl . '/createItem', $headers, $job, array(
+                'query' => array('name' => $name)
+            ))->send();
+        }
     }
 
     /**
