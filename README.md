@@ -132,17 +132,15 @@ to embrace.
 ```
 .
 |-- build/
-|   |-- coverage/
-|   |   `--index.html
-|   |-- logs/
-|   |   |-- clover.xml
-|   |   |-- jdepend.xml
-|   |   |-- junit.xml
-|   |   |-- phploc.csv
-|   |   `-- pmd.xml
-|   |-- pdepend/
-|   |   |-- dependencies.svg
-|   |   `-- overview-pyramid.svg
-|   `-- composer.phar
-`-- cache.properties
-```
+    |-- coverage/
+    |   `--index.html
+    |-- logs/
+    |   |-- clover.xml
+    |   |-- jdepend.xml
+    |   |-- junit.xml
+    |   |-- phploc.csv
+    |   `-- pmd.xml
+    |-- pdepend/
+    |   |-- dependencies.svg
+    |   `-- overview-pyramid.svg
+    `-- composer.phar
