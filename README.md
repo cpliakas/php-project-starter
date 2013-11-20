@@ -48,6 +48,7 @@ git push -u origin master
 
 #### Configure Other Services
 
+  * Jenkins: Pass the `--jenkins-url` option to CLI tool
   * Packagist: Follow the [Publish It](https://packagist.org/) section
   * Travis CI: Follow steps one and two of the [Getting Started](http://about.travis-ci.org/docs/user/getting-started/#Step-one%3A-Sign-in) documentation
   * Coveralls: Follow the [Getting Started](https://coveralls.io/docs) documentation
