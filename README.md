@@ -35,6 +35,9 @@ vendor/bin/php-project \
   /path/to/working-copy
 ```
 
+Pass the `--jenkins-url` option to post a job to Jenkins that consumes the
+build artifacts.
+
 #### Make A Repository On GitHub
 
 [Make a new repository](https://help.github.com/articles/create-a-repo#make-a-new-repository-on-github)
@@ -48,7 +51,6 @@ git push -u origin master
 
 #### Configure Other Services
 
-  * Jenkins: Pass the `--jenkins-url` option to CLI tool
   * Packagist: Follow the [Publish It](https://packagist.org/) section
   * Travis CI: Follow steps one and two of the [Getting Started](http://about.travis-ci.org/docs/user/getting-started/#Step-one%3A-Sign-in) documentation
   * Coveralls: Follow the [Getting Started](https://coveralls.io/docs) documentation
