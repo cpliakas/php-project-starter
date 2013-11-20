@@ -1,5 +1,7 @@
 # PHP Project Starter
 
+[![Latest Stable Version](https://poser.pugx.org/cpliakas/php-project-starter/v/stable.png)](https://packagist.org/packages/cpliakas/php-project-starter)
+
 This application provides an opinionated template outlining directory structure,
 dotfiles, build systems, and services connections that can be used to start a
 PHP project more efficiently using common conventions. It also provides a
