@@ -1,0 +1,317 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>100</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings>
+      <autoRebuild>false</autoRebuild>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/{{ project.name }}.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>@daily</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Ant>
+      <targets></targets>
+      <antName>(Default)</antName>
+    </hudson.tasks.Ant>
+  </builders>
+  <publishers>
+    <hudson.plugins.pmd.PmdPublisher>
+      <healthy></healthy>
+      <unHealthy></unHealthy>
+      <thresholdLimit>low</thresholdLimit>
+      <pluginName>[PMD] </pluginName>
+      <defaultEncoding></defaultEncoding>
+      <canRunOnFailed>false</canRunOnFailed>
+      <useStableBuildAsReference>false</useStableBuildAsReference>
+      <useDeltaValues>false</useDeltaValues>
+      <thresholds>
+        <unstableTotalAll></unstableTotalAll>
+        <unstableTotalHigh></unstableTotalHigh>
+        <unstableTotalNormal></unstableTotalNormal>
+        <unstableTotalLow></unstableTotalLow>
+        <failedTotalAll></failedTotalAll>
+        <failedTotalHigh></failedTotalHigh>
+        <failedTotalNormal></failedTotalNormal>
+        <failedTotalLow></failedTotalLow>
+      </thresholds>
+      <shouldDetectModules>false</shouldDetectModules>
+      <dontComputeNew>true</dontComputeNew>
+      <doNotResolveRelativePaths>true</doNotResolveRelativePaths>
+      <pattern>build/logs/pmd.xml</pattern>
+    </hudson.plugins.pmd.PmdPublisher>
+    <hudson.plugins.plot.PlotPublisher>
+      <plots>
+        <hudson.plugins.plot.Plot>
+          <title>A - Lines of code</title>
+          <yaxis>Lines of Code</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>build/logs/phploc.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <strExclusionSet>
+                <string>Lines of Code (LOC)</string>
+                <string>Comment Lines of Code (CLOC)</string>
+                <string>Non-Comment Lines of Code (NCLOC)</string>
+              </strExclusionSet>
+              <inclusionFlag>INCLUDE_BY_STRING</inclusionFlag>
+              <exclusionValues>Lines of Code (LOC),Comment Lines of Code (CLOC),Non-Comment Lines of Code (NCLOC)</exclusionValues>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>phploc</group>
+          <numBuilds>100</numBuilds>
+          <csvFileName>1173183134.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>B - Structures</title>
+          <yaxis>Count</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>build/logs/phploc.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <strExclusionSet>
+                <string>Functions</string>
+                <string>Classes</string>
+                <string>Namespaces</string>
+                <string>Files</string>
+                <string>Directories</string>
+                <string>Methods</string>
+                <string>Interfaces</string>
+                <string>Constants</string>
+                <string>Anonymous Functions</string>
+              </strExclusionSet>
+              <inclusionFlag>INCLUDE_BY_STRING</inclusionFlag>
+              <exclusionValues>Directories,Files,Namespaces,Interfaces,Classes,Methods,Functions,Anonymous Functions,Constants</exclusionValues>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>phploc</group>
+          <numBuilds>100</numBuilds>
+          <csvFileName>1581816721.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>C - Testing</title>
+          <yaxis>Count</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>build/logs/phploc.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <strExclusionSet>
+                <string>Functions</string>
+                <string>Classes</string>
+                <string>Methods</string>
+                <string>Test Clases</string>
+                <string>Test Methods</string>
+              </strExclusionSet>
+              <inclusionFlag>INCLUDE_BY_STRING</inclusionFlag>
+              <exclusionValues>Classes,Methods,Functions,Test Clases,Test Methods</exclusionValues>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>phploc</group>
+          <numBuilds>100</numBuilds>
+          <csvFileName>488034222.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>D - Types of Classes</title>
+          <yaxis>Count</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>build/logs/phploc.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <strExclusionSet>
+                <string>Abstract Classes</string>
+                <string>Classes</string>
+                <string>Concrete Classes</string>
+              </strExclusionSet>
+              <inclusionFlag>INCLUDE_BY_STRING</inclusionFlag>
+              <exclusionValues>Classes,Abstract Classes,Concrete Classes</exclusionValues>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>phploc</group>
+          <numBuilds>100</numBuilds>
+          <csvFileName>499191940.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>E - Types of Methods</title>
+          <yaxis>Count</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>build/logs/phploc.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <strExclusionSet>
+                <string>Methods</string>
+                <string>Static Methods</string>
+                <string>Non-Static Methods</string>
+                <string>Public Methods</string>
+                <string>Non-Public Methods</string>
+              </strExclusionSet>
+              <inclusionFlag>INCLUDE_BY_STRING</inclusionFlag>
+              <exclusionValues>Methods,Non-Static Methods,Static Methods,Public Methods,Non-Public Methods</exclusionValues>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>phploc</group>
+          <numBuilds>100</numBuilds>
+          <csvFileName>498037693.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>F - Types of Constants</title>
+          <yaxis>Count</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>build/logs/phploc.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <strExclusionSet>
+                <string>Class Constants</string>
+                <string>Global Constants</string>
+                <string>Constants</string>
+              </strExclusionSet>
+              <inclusionFlag>INCLUDE_BY_STRING</inclusionFlag>
+              <exclusionValues>Constants,Global Constants,Class Constants</exclusionValues>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>phploc</group>
+          <numBuilds>100</numBuilds>
+          <csvFileName>498422442.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>G - Average Length</title>
+          <yaxis>Average Non-Comment Lines of Code</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>build/logs/phploc.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <strExclusionSet>
+                <string>Average Method Length (LLOC)</string>
+                <string>Average Class Length (LLOC)</string>
+              </strExclusionSet>
+              <inclusionFlag>INCLUDE_BY_STRING</inclusionFlag>
+              <exclusionValues>Average Class Length (LLOC),Average Method Length (LLOC)</exclusionValues>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>phploc</group>
+          <numBuilds>100</numBuilds>
+          <csvFileName>1582201470.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>H - Relative Cyclomatic Complexity</title>
+          <yaxis>Cyclomatic Complexity by Structure</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>build/logs/phploc.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <strExclusionSet>
+                <string>Cyclomatic Complexity / Lines of Code</string>
+                <string>Cyclomatic Complexity / Number of Methods</string>
+              </strExclusionSet>
+              <inclusionFlag>INCLUDE_BY_STRING</inclusionFlag>
+              <exclusionValues>Cyclomatic Complexity / Lines of Code,Cyclomatic Complexity / Number of Methods</exclusionValues>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>phploc</group>
+          <numBuilds>100</numBuilds>
+          <csvFileName>498807191.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+        </hudson.plugins.plot.Plot>
+      </plots>
+    </hudson.plugins.plot.PlotPublisher>
+    <hudson.plugins.jdepend.JDependRecorder>
+      <configuredJDependFile>build/logs/jdepend.xml</configuredJDependFile>
+    </hudson.plugins.jdepend.JDependRecorder>
+    <hudson.tasks.junit.JUnitResultArchiver>
+      <testResults>build/logs/junit.xml</testResults>
+      <keepLongStdio>false</keepLongStdio>
+      <testDataPublishers/>
+    </hudson.tasks.junit.JUnitResultArchiver>
+    <htmlpublisher.HtmlPublisher>
+      <reportTargets>
+        <htmlpublisher.HtmlPublisherTarget>
+          <reportName>Code Coverage</reportName>
+          <reportDir>build/coverage</reportDir>
+          <reportFiles>index.html</reportFiles>
+          <keepAll>false</keepAll>
+          <allowMissing>false</allowMissing>
+          <wrapperName>htmlpublisher-wrapper.html</wrapperName>
+        </htmlpublisher.HtmlPublisherTarget>
+      </reportTargets>
+    </htmlpublisher.HtmlPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>
