@@ -78,7 +78,7 @@ The main targets can be found by running `ant -p` and are listed below:
 Common command line options that set Ant properties are listed below:
 
 * `-Dcomposer.noselfupdate`: Do not run `composer self-update` during the build
-* `-Dcomposer.noupdate`: Dpo not run `composer update` during the build
+* `-Dcomposer.noupdate`: Do not run `composer update` during the build
 
 ## Tools And Conventions
 
