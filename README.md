@@ -75,6 +75,11 @@ The main targets can be found by running `ant -p` and are listed below:
 * `phpmd-ci`: Perform mess detection using PHPMD, creating a log file for the CI server
 * `phpunit`: Run unit tests with PHPUnit
 
+Common command line options that set Ant properties are listed below:
+
+* `-Dcomposer.noselfupdate`: Do not run `composer self-update` during the build
+* `-Dcomposer.noupdate`: Dpo not run `composer update` during the build
+
 ## Tools And Conventions
 
 Tools and conventions that this template expects the PHP project being started

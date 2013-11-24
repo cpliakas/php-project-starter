@@ -40,10 +40,19 @@
   </target>
 
   <target name="composer-download" unless="composer.present">
+    <property name="composer.noselfupdate" value="true"/>
     <get src="https://getcomposer.org/composer.phar" dest="${builddir}/composer.phar"/>
   </target>
 
-  <target name="composer" depends="composer-check,composer-download" unless="composer.noupdate" description="Run composer update">
+  <target name="composer-selfupdate" unless="composer.noselfupdate">
+    <exec executable="php">
+      <arg value="${builddir}/composer.phar"/>
+      <arg value="self-update"/>
+      <arg value="--quiet"/>
+    </exec>
+  </target>
+
+  <target name="composer" depends="composer-check,composer-download,composer-selfupdate" unless="composer.noupdate" description="Run composer update">
     <exec executable="php">
       <arg value="${builddir}/composer.phar"/>
       <arg value="update"/>
