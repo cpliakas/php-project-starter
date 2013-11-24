@@ -12,22 +12,22 @@ can be up and running with your new project in seconds.
 
 #### Install The Command Line Tool
 
-The following is a copy-pasta snippet to download Composer and install the PHP
-Project Starter tool with its dependencies.
-
 ```
-mkdir php-project-starter && cd php-project-starter
-curl -sS https://getcomposer.org/installer | php
-php composer.phar require cpliakas/php-project-starter:*
+curl -sLO https://github.com/cpliakas/php-project-starter/releases/download/0.2.3/php-project.phar
 ```
 
-Run `vendor/bin/php-project --help` to see all options supported by the command
+Run `php php-project.phar --help` to see all options supported by the command
 line tool and ensure that installation succeeded.
+
+It is also common practice to place the `php-project.phar` file in a location
+that makes it easier to access, for example `/usr/local/bin`, and renaming it
+to `php-project`. Ensure the file is executable by running `chmod 755` so that
+you don't have to prefix the command with `php`.
 
 #### Create A New Project
 
 ```
-vendor/bin/php-project \
+php php-project.phar \
   --label="My Project" \
   --description="A longer description for My Project" \
   --namespace="My\Project" \
@@ -55,11 +55,11 @@ git push -u origin master
   * Travis CI: Follow steps one and two of the [Getting Started](http://about.travis-ci.org/docs/user/getting-started/#Step-one%3A-Sign-in) documentation
   * Coveralls: Follow the [Getting Started](https://coveralls.io/docs) documentation
 
-#### Using Apache Ant
+## Using Apache Ant
 
-Running `ant` in the project's root directory will download Composer, install
-development dependencies, run PHPUnit, and generate a code coverage report and
-software metrics in the `./build` directory.
+Running `ant` in the newly created project's root directory will download
+Composer, install development dependencies, run PHPUnit, and generate a code
+coverage report and software metrics in the `./build` directory.
 
 The main targets can be found by running `ant -p` and are listed below:
 
