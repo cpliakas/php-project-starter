@@ -1,0 +1,37 @@
+{
+    "chmod": "0755",
+    "directories": ["src"],
+    "files": [
+        "bin/php-project.php",
+        "LICENSE",
+        "template/.coveralls.yml",
+        "template/.editorconfig",
+        "template/.gitignore",
+        "template/.travis.yml",
+        "template/LICENSE",
+        "template/README.md",
+        "template/build.xml",
+        "template/composer.json",
+        "template/phpmd.xml",
+        "template/phpunit.xml",
+        "template/test/bootstrap.php",
+        "vendor/cpliakas/git-wrapper/bin/git-ssh-wrapper.sh"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": [
+                "phing",
+                "test",
+                "tests",
+                "Test",
+                "Tests",
+                "Tester"
+            ],
+            "in": "vendor"
+        }
+    ],
+    "main": "bin/php-project",
+    "output": "build/php-project.phar",
+    "stub": true
+}

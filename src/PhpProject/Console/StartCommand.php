@@ -198,7 +198,8 @@ class StartCommand extends Command
      */
     public function copy($filename, $dir, array $replacements = array())
     {
-        if (!$filepath = realpath(__DIR__ . '/../../../template/' . $filename)) {
+        $filepath = __DIR__ . '/../../../template/' . $filename;
+        if (!is_file($filepath)) {
             throw new \RuntimeException('File not found: ' . $filename);
         }
 

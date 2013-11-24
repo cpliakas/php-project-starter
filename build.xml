@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="PHP Project Starter" default="build">
+
+  <property name="builddir" value="${basedir}/build"/>
+
+  <target name="build" depends="lint,composer,phar"/>
+
+  <target name="clean" description="Cleanup build artifacts">
+    <delete dir="${builddir}"/>
+  </target>
+
+  <target name="clean-src" description="Cleanup dependency source code">
+    <delete file="${basedir}/composer.lock"/>
+    <delete dir="${basedir}/vendor"/>
+  </target>
+
+  <target name="clean-all" depends="clean,clean-src" description="Cleanup build artifacts and dependency source code"/>
+
+  <target name="prepare">
+    <mkdir dir="${builddir}"/>
+  </target>
+
+  <target name="lint" description="Perform syntax check of source code files">
+    <apply executable="php" failonerror="true">
+      <arg value="-l" />
+      <fileset dir="${basedir}/bin">
+        <include name="*" />
+      </fileset>
+      <fileset dir="${basedir}/src">
+        <include name="**/*.php" />
+      </fileset>
+    </apply>
+  </target>
+
+  <target name="composer-check" depends="prepare">
+    <available file="${builddir}/composer.phar" property="composer.present"/>
+  </target>
+
+  <target name="composer-download" unless="composer.present">
+    <property name="composer.noselfupdate" value="true"/>
+    <get src="https://getcomposer.org/composer.phar" dest="${builddir}/composer.phar"/>
+  </target>
+
+  <target name="composer-selfupdate" unless="composer.noselfupdate">
+    <exec executable="php">
+      <arg value="${builddir}/composer.phar"/>
+      <arg value="self-update"/>
+      <arg value="--quiet"/>
+    </exec>
+  </target>
+
+  <target name="composer" depends="composer-check,composer-download,composer-selfupdate" unless="composer.noupdate" description="Run composer update">
+    <exec executable="php">
+      <arg value="${builddir}/composer.phar"/>
+      <arg value="update"/>
+      <arg value="--no-dev"/>
+    </exec>
+  </target>
+
+  <target name="box-check" depends="prepare">
+    <available file="${builddir}/box.phar" property="box.present"/>
+  </target>
+
+  <target name="box-download" unless="box.present">
+    <property name="box.noupdate" value="true"/>
+    <get src="http://box-project.org/installer.php" dest="${builddir}/installer.php"/>
+    <exec executable="php" dir="${builddir}">
+      <arg value="installer.php"/>
+    </exec>
+    <delete file="${builddir}/installer.php"/>
+  </target>
+
+  <target name="box-update" unless="box.noupdate">
+    <exec executable="php">
+      <arg value="${builddir}/box.phar"/>
+      <arg value="update"/>
+      <arg value="--quiet"/>
+    </exec>
+  </target>
+
+  <target name="phar" depends="box-check,box-download,box-update" description="Build phar">
+    <exec executable="${builddir}/box.phar">
+      <arg value="build"/>
+    </exec>
+  </target>
+
+</project>
