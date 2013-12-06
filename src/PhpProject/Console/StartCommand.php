@@ -160,7 +160,7 @@ class StartCommand extends Command
                 $client->setSslVerification(false, false);
             }
 
-            $configXml = file_get_contents(realpath(__DIR__ . '/../../../jenkins/config.xml'));
+            $configXml = file_get_contents(__DIR__ . '/../../../jenkins/config.xml');
             $job = str_replace('{{ project.name }}', $projectName, $configXml);
 
             $headers = array('Content-Type' => 'text/xml');
@@ -228,7 +228,7 @@ class StartCommand extends Command
     public function parseProjectName($projectName)
     {
         if (preg_match(self::NAME_PATTERN, $projectName, $matches)) {
-          return array($matches[1], $matches[2]);
+            return array($matches[1], $matches[2]);
         } else {
             throw new \RuntimeException('Name invalid.');
         }

@@ -3,6 +3,7 @@
     "directories": ["src"],
     "files": [
         "bin/php-project.php",
+        "jenkins/config.xml",
         "LICENSE",
         "template/.coveralls.yml",
         "template/.editorconfig",
@@ -15,7 +16,9 @@
         "template/phpmd.xml",
         "template/phpunit.xml",
         "template/test/bootstrap.php",
-        "vendor/cpliakas/git-wrapper/bin/git-ssh-wrapper.sh"
+        "vendor/cpliakas/git-wrapper/bin/git-ssh-wrapper.sh",
+        "vendor/guzzle/guzzle/src/Guzzle/Http/Resources/cacert.pem",
+        "vendor/guzzle/guzzle/src/Guzzle/Http/Resources/cacert.pem.md5"
     ],
     "finder": [
         {
