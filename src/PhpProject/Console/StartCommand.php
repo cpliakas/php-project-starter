@@ -89,6 +89,12 @@ class StartCommand extends Command
                InputOption::VALUE_NONE,
                'If set, SSL verification will be skipped'
             )
+            ->addOption(
+               'no-repo',
+                null,
+               InputOption::VALUE_NONE,
+               'Don\'t create the Git repository'
+            )
         ;
     }
 
@@ -135,21 +141,23 @@ class StartCommand extends Command
             'test/bootstrap.php',
         );
 
+        if (!$input->getOption('no-repo')) {
 
-        // Create the project skeleton.
-        $git = $wrapper->init($dir);
+            // Create the project skeleton.
+            $git = $wrapper->init($dir);
 
-        $srcDir = str_replace('\\', '/', $ns);
-        $this->fs->mkdir($dir . '/src/' . $srcDir, 0755);
-        $this->fs->mkdir($dir . '/test/' . $srcDir . '/Test', 0755);
+            $srcDir = str_replace('\\', '/', $ns);
+            $this->fs->mkdir($dir . '/src/' . $srcDir, 0755);
+            $this->fs->mkdir($dir . '/test/' . $srcDir . '/Test', 0755);
 
-        foreach ($filenames as $filename) {
-            $this->copy($filename, $dir, $replacements);
-            $git->add($filename);
+            foreach ($filenames as $filename) {
+                $this->copy($filename, $dir, $replacements);
+                $git->add($filename);
+            }
+
+            $git->commit('Initial commit.');
+            $git->remote('add', 'origin', 'git@github.com:' . $projectName . '.git');
         }
-
-        $git->commit('Initial commit.');
-        $git->remote('add', 'origin', 'git@github.com:' . $projectName . '.git');
 
 
         // Create the Jenkins job if a URL is passed.
