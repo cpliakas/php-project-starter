@@ -115,6 +115,7 @@ to embrace.
 * [Template for Jenkins Jobs for PHP Projects](http://jenkins-php.org/)
 * [PHP Standards Recommendations (PSR)](http://www.php-fig.org/)
 * [The MIT License (MIT)](http://opensource.org/licenses/MIT)
+* [EditorConfig](http://editorconfig.org/)
 
 ## Directory Structure
 
