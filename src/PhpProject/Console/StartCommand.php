@@ -119,12 +119,13 @@ class StartCommand extends Command
         $ns      = $this->getNamespaceOption($input->getOption('namespace'), $name);
 
         $replacements = array(
-          '{{ project.name }}'        => $projectName,
-          '{{ project.label }}'       => $label,
-          '{{ project.description }}' => $desc,
-          '{{ project.namespace }}'   => $ns,
-          '{{ copyright.year }}'      => $year,
-          '{{ copyright.holders }}'   => $copy,
+          '{{ project.name }}'          => $projectName,
+          '{{ project.label }}'         => $label,
+          '{{ project.description }}'   => $desc,
+          '{{ project.namespace }}'     => $ns,
+          '{{ project.namespace.esc }}' => str_replace('\\', '\\\\', $ns),
+          '{{ copyright.year }}'        => $year,
+          '{{ copyright.holders }}'     => $copy,
         );
 
         $filenames = array(
