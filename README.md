@@ -13,7 +13,7 @@ can be up and running with your new project in seconds.
 #### Install The Command Line Tool
 
 ```
-curl -sLO https://github.com/cpliakas/php-project-starter/releases/download/0.2.5/php-project.phar
+curl -sLO https://github.com/cpliakas/php-project-starter/releases/download/0.2.6/php-project.phar
 ```
 
 Run `php php-project.phar --help` to see all options supported by the command
