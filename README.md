@@ -150,6 +150,7 @@ to embrace.
     |   |-- jdepend.xml
     |   |-- junit.xml
     |   |-- phploc.csv
+    |   |-- pmd-cpd.xml
     |   `-- pmd.xml
     |-- pdepend/
     |   |-- dependencies.svg

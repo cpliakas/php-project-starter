@@ -60,6 +60,12 @@ class StartCommand extends Command
                'PSR-0 namespace, e.g. MyProject, SubProject\\MyComponent, defaults to the project name in came case'
             )
             ->addOption(
+               'class',
+                null,
+               InputOption::VALUE_REQUIRED,
+               'The name of the class in the namespace used to create the initial class file, defaults to defaults to the project name in came case'
+            )
+            ->addOption(
                'copyright-year',
                 null,
                InputOption::VALUE_REQUIRED,
@@ -116,7 +122,8 @@ class StartCommand extends Command
         $desc    = $input->getOption('description') ?: '';
         $year    = $input->getOption('copyright-year') ?: date('Y');
         $copy    = $this->getCopyrightHoldersOption($wrapper, $input->getOption('copyright-holders'));
-        $ns      = $this->getNamespaceOption($input->getOption('namespace'), $name);
+        $ns      = $this->getCamelCaseName($input->getOption('namespace'), $name);
+        $class   = $this->getCamelCaseName($input->getOption('class'), $name);
 
         $replacements = array(
           '{{ project.name }}'          => $projectName,
@@ -124,6 +131,7 @@ class StartCommand extends Command
           '{{ project.description }}'   => $desc,
           '{{ project.namespace }}'     => $ns,
           '{{ project.namespace.esc }}' => str_replace('\\', '\\\\', $ns),
+          '{{ project.class }}'         => $class,
           '{{ copyright.year }}'        => $year,
           '{{ copyright.holders }}'     => $copy,
         );
@@ -139,6 +147,7 @@ class StartCommand extends Command
             'composer.json',
             'phpmd.xml',
             'phpunit.xml',
+            'src/DummyClass.php',
             'test/bootstrap.php',
             'test/DummyTest.php',
         );
@@ -154,15 +163,20 @@ class StartCommand extends Command
             $this->fs->mkdir($dir . '/src/' . $srcDir, 0755);
             $this->fs->mkdir($testDir, 0755);
 
-            // Move all files, add everything except "test/DummyTest.php"
+            // Move all files, add everything except dummy files
             foreach ($filenames as $filename) {
                 $this->copy($filename, $dir, $replacements);
-                if ($filename != 'test/DummyTest.php') {
+                if (false === strpos($filename, 'Dummy')) {
                     $git->add($filename);
                 }
             }
 
-            // Copy the dummy test to the correct location and add it to repo.
+            // Rename the dummy class file and add it to the repo
+            $classFilepath = 'src/' . $srcDir . '/' . $class . '.php';
+            $this->fs->rename($dir . '/src/DummyClass.php', $dir . '/' . $classFilepath);
+            $git->add($classFilepath);
+
+            // Rename the dummy test and add it to the repo
             $this->fs->rename($dir . '/test/DummyTest.php', $testDir . '/DummyTest.php');
             $git->add('test/' . $srcDir . '/Test/DummyTest.php');
 
@@ -281,7 +295,7 @@ class StartCommand extends Command
      *
      * @return string
      */
-    public function getNamespaceOption($option, $name)
+    public function getCamelCaseName($option, $name)
     {
         if (!$option) {
             $parts = preg_split('/[_.-]/', $name);
