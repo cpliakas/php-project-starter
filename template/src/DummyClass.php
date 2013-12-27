@@ -9,7 +9,7 @@ class {{ project.class }}
      *
      * @return bool
      *
-     * @see \{{ project.namespace }}\Test\DummyTest.php
+     * @see \{{ project.namespace }}\Test\DummyTest
      */
     public function autoloaded()
     {
