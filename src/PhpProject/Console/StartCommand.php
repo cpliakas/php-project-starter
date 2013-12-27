@@ -140,6 +140,7 @@ class StartCommand extends Command
             'phpmd.xml',
             'phpunit.xml',
             'test/bootstrap.php',
+            'test/DummyTest.php',
         );
 
         if (!$input->getOption('no-repo')) {
@@ -148,13 +149,22 @@ class StartCommand extends Command
             $git = $wrapper->init($dir);
 
             $srcDir = str_replace('\\', '/', $ns);
-            $this->fs->mkdir($dir . '/src/' . $srcDir, 0755);
-            $this->fs->mkdir($dir . '/test/' . $srcDir . '/Test', 0755);
+            $testDir = $dir . '/test/' . $srcDir . '/Test';
 
+            $this->fs->mkdir($dir . '/src/' . $srcDir, 0755);
+            $this->fs->mkdir($testDir, 0755);
+
+            // Move all files, add everything except "test/DummyTest.php"
             foreach ($filenames as $filename) {
                 $this->copy($filename, $dir, $replacements);
-                $git->add($filename);
+                if ($filename != 'test/DummyTest.php') {
+                    $git->add($filename);
+                }
             }
+
+            // Copy the dummy test to the correct location and add it to repo.
+            $this->fs->rename($dir . '/test/DummyTest.php', $testDir . '/DummyTest.php');
+            $git->add('test/' . $srcDir . '/Test/DummyTest.php');
 
             $git->commit('Initial commit.');
             $git->remote('add', 'origin', 'git@github.com:' . $projectName . '.git');
