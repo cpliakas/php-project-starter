@@ -78,7 +78,7 @@
     </exec>
   </target>
 
-  <target name="phar" depends="box-check,box-download,box-update" description="Build phar">
+  <target name="phar" depends="composer,box-check,box-download,box-update" description="Build phar">
     <exec executable="${builddir}/box.phar">
       <arg value="build"/>
     </exec>
