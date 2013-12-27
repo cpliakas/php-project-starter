@@ -63,7 +63,7 @@ class StartCommand extends Command
                'class',
                 null,
                InputOption::VALUE_REQUIRED,
-               'The name of the class in the namespace used to create the initial class file, defaults to defaults to the project name in came case'
+               'The class in the namespace used to create the initial class file, defaults to the project name in came case'
             )
             ->addOption(
                'copyright-year',

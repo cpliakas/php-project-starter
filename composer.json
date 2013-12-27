@@ -1,7 +1,7 @@
 {
     "name": "cpliakas/php-project-starter",
     "type": "library",
-    "description": "An opinionated template and CLI application that makes it easy to start a PHP project using best practice tools and conventions.",
+    "description": "A command line tool that allows developers to quickly create PHP applications that use common conventions and best-in-breed development tools.",
     "keywords": ["php"],
     "homepage": "https://github.com/cpliakas/php-project-starter",
     "license": "MIT",
