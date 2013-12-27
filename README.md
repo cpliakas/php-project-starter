@@ -2,18 +2,22 @@
 
 [![Latest Stable Version](https://poser.pugx.org/cpliakas/php-project-starter/v/stable.png)](https://packagist.org/packages/cpliakas/php-project-starter)
 
-This application provides an opinionated template outlining directory structure,
-dotfiles, build systems, and services connections that can be used to start a
-PHP project more efficiently using common conventions. It also provides a
-command line tool that generates a skeleton project from the template so you
-can be up and running with your new project in seconds.
+PHP Project Starter is a command line tool that allows developers to quickly
+create PHP applications that use common conventions and best-in-breed
+development tools. The goals of this application are to guide developers towards
+best practices and get them from zero-to-CI in seconds.
+
+The applications created by this tool have an opinionated directory structure,
+build system, and pre-configured set of services connections. Refer to the
+[Tools And Conventions](#tools-and-conventions) and [Directory Structure](#directory-structure)
+sections below for more details.
 
 ## Usage
 
 #### Install The Command Line Tool
 
 ```
-curl -sLO https://github.com/cpliakas/php-project-starter/releases/download/0.2.6/php-project.phar
+curl -sLO https://github.com/cpliakas/php-project-starter/releases/download/0.2.7/php-project.phar
 ```
 
 Run `php php-project.phar --help` to see all options supported by the command
