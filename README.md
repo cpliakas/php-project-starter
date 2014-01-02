@@ -35,8 +35,7 @@ php php-project.phar \
   --label="My Project" \
   --description="A longer description for My Project" \
   --namespace="My\Project" \
-  cpliakas/my-project \
-  /path/to/working-copy
+  cpliakas/my-project
 ```
 
 Pass the `--jenkins-url` option to post a job to Jenkins that consumes the
