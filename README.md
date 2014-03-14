@@ -17,7 +17,7 @@ sections below for more details.
 #### Install The Command Line Tool
 
 ```
-curl -sLO https://github.com/cpliakas/php-project-starter/releases/download/0.2.7/php-project.phar
+curl -sLO https://github.com/cpliakas/php-project-starter/releases/download/0.2.8/php-project.phar
 ```
 
 Run `php php-project.phar --help` to see all options supported by the command
