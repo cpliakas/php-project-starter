@@ -4,6 +4,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/{{ project.name }}.svg)](https://coveralls.io/r/{{ project.name }}?branch=master)
 [![Total Downloads](https://poser.pugx.org/{{ project.name }}/downloads.png)](https://packagist.org/packages/{{ project.name }})
 [![Latest Stable Version](https://poser.pugx.org/{{ project.name }}/v/stable.png)](https://packagist.org/packages/{{ project.name }})
+[![License](https://poser.pugx.org/{{ project.name }}/license.svg)](https://packagist.org/packages/{{ project.name }})
 
 @todo
 
