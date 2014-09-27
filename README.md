@@ -1,5 +1,6 @@
 # PHP Project Starter
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cpliakas/php-project-starter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cpliakas/php-project-starter/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/cpliakas/php-project-starter/v/stable.png)](https://packagist.org/packages/cpliakas/php-project-starter)
 
 PHP Project Starter is a command line tool that allows developers to quickly
