@@ -2,7 +2,6 @@
 
 use Cpliakas\PhpProjectStarter\Console as Console;
 use Symfony\Component\Console\Application;
-use Symfony\Component\Filesystem\Filesystem;
 
 // Try to find the appropriate autoloader.
 if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
@@ -12,5 +11,5 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
 }
 
 $application = new Application();
-$application->add(new Console\NewCommand(new Filesystem()));
+$application->add(new Console\NewCommand());
 $application->run();
