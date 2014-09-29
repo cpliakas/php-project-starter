@@ -1,6 +1,6 @@
 <?php
 
-use PhpProject\Console\PhpProjectApplication;
+use Cpliakas\PhpProjectStarter\Console\PhpProjectApplication;
 use Symfony\Component\Filesystem\Filesystem;
 
 // Try to find the appropriate autoloader.

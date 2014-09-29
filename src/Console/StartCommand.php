@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpProject\Console;
+namespace Cpliakas\PhpProjectStarter\Console;
 
 use GitWrapper\GitWrapper;
 use Guzzle\Http\Client;
