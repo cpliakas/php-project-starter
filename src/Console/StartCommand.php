@@ -137,9 +137,9 @@ class StartCommand extends Command
         );
 
         $filenames = array(
-            '.coveralls.yml',
             '.editorconfig',
             '.gitignore',
+            '.scrutinizer.yml',
             '.travis.yml',
             'LICENSE',
             'README.md',

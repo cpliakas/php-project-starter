@@ -56,7 +56,7 @@ git push -u origin master
 
   * Packagist: Follow the [Publish It](https://packagist.org/) section
   * Travis CI: Follow steps one and two of the [Getting Started](http://about.travis-ci.org/docs/user/getting-started/#Step-one%3A-Sign-in) documentation
-  * Coveralls: Follow the [Getting Started](https://coveralls.io/docs) documentation
+  * Scritinizer CI: Follow the [Getting Started](https://scrutinizer-ci.com/docs/) documentation
 
 ## Using Apache Ant
 
@@ -94,31 +94,34 @@ to embrace.
 
 ### Build & CI
 
-* [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
 * [Apache Ant](http://ant.apache.org/)
 * [Jenkins](http://jenkins-ci.org/)
+* [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
+* [Scrutinizer CI](https://scrutinizer-ci.com/)
 * [Travis CI](https://travis-ci.org/)
 
 ### Code Quality
 
-* [PHPLOC](https://github.com/sebastianbergmann/phploc)
+* [PHP Coding Standards Fixer](https://github.com/fabpot/PHP-CS-Fixer)
 * [PHP Depend](http://pdepend.org/)
-* [PHPMD](http://phpmd.org/)
 * [PHPCPD](https://github.com/sebastianbergmann/phpcpd)
+* [PHPLOC](https://github.com/sebastianbergmann/phploc)
+* [PHPMD](http://phpmd.org/)
 
 ### Services
 
+* [Badge Poser](https://poser.pugx.org/)
 * [GitHub](https://github.com/)
 * [Packagist](https://packagist.org/)
-* [Coveralls](https://coveralls.io/)
-* [Badge Poser](https://poser.pugx.org/)
+* [Scrutinizer CI](https://scrutinizer-ci.com/)
+* [Travis CI](https://travis-ci.org/)
 
 ### Conventions
 
-* [Template for Jenkins Jobs for PHP Projects](http://jenkins-php.org/)
-* [PHP Standards Recommendations (PSR)](http://www.php-fig.org/)
-* [The MIT License (MIT)](http://opensource.org/licenses/MIT)
 * [EditorConfig](http://editorconfig.org/)
+* [The MIT License (MIT)](http://opensource.org/licenses/MIT)
+* [PHP Standards Recommendations (PSR)](http://www.php-fig.org/)
+* [Template for Jenkins Jobs for PHP Projects](http://jenkins-php.org/)
 
 ## Directory Structure
 
@@ -128,9 +131,9 @@ to embrace.
 .
 |-- src/
 |-- test/
-|-- .coveralls.yml
 |-- .editorconfig
 |-- .gitignore
+|-- .scrutinizer.yml
 |-- .travis.yml
 |-- build.xml
 |-- composer.json
