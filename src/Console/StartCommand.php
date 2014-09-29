@@ -154,31 +154,23 @@ class StartCommand extends Command
 
         if (!$input->getOption('no-repo')) {
 
-            // Create the project skeleton.
             $git = $wrapper->init($dir);
 
-            $srcDir = str_replace('\\', '/', $ns);
-            $testDir = $dir . '/test/' . $srcDir . '/Test';
-
-            $this->fs->mkdir($dir . '/src/' . $srcDir, 0755);
-            $this->fs->mkdir($testDir, 0755);
+            $this->fs->mkdir($dir . '/src', 0755);
+            $this->fs->mkdir($dir . '/test', 0755);
 
             // Move all files, add everything except dummy files
             foreach ($filenames as $filename) {
                 $this->copy($filename, $dir, $replacements);
-                if (false === strpos($filename, 'Dummy')) {
+                if ($filename != 'src/DummyClass.php') {
                     $git->add($filename);
                 }
             }
 
             // Rename the dummy class file and add it to the repo
-            $classFilepath = 'src/' . $srcDir . '/' . $class . '.php';
+            $classFilepath = 'src/' . $class . '.php';
             $this->fs->rename($dir . '/src/DummyClass.php', $dir . '/' . $classFilepath);
             $git->add($classFilepath);
-
-            // Rename the dummy test and add it to the repo
-            $this->fs->rename($dir . '/test/DummyTest.php', $testDir . '/DummyTest.php');
-            $git->add('test/' . $srcDir . '/Test/DummyTest.php');
 
             $git->commit('Initial commit.');
             $git->remote('add', 'origin', 'git@github.com:' . $projectName . '.git');
