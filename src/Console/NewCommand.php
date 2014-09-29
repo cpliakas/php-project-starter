@@ -102,10 +102,10 @@ class NewCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $projectName = new ProjectName($input->getArgument('project-name'));
+        $gitWrapper = new GitWrapper($input->getOption('git-binary'));
+        $projectStructure = new ProjectStructure($projectName, $gitWrapper);
 
         if (!$input->getOption('no-repo')) {
-            $gitWrapper = new GitWrapper($input->getOption('git-binary'));
-            $projectStructure = new ProjectStructure($projectName, $gitWrapper);
             $projectStructure->create();
         }
 
