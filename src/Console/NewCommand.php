@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
-class StartCommand extends Command
+class NewCommand extends Command
 {
     const NAME_PATTERN = '@^([A-Za-z0-9][A-Za-z0-9_.-]*)/([A-Za-z0-9][A-Za-z0-9_.-]+)$@';
 
@@ -29,7 +29,7 @@ class StartCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('start')
+            ->setName('new')
             ->setDescription('Start a new PHP project.')
             ->addArgument(
                'project-name',

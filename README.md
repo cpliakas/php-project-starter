@@ -31,7 +31,7 @@ you don't have to prefix the command with `php`.
 #### Create A New Project
 
 ```
-php php-project.phar \
+php php-project.phar new \
   --label="My Project" \
   --description="A longer description for My Project" \
   --namespace="My\Project" \
