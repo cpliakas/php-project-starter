@@ -23,12 +23,12 @@ class RepositoryTest extends \PHPUnit_Framework_TestCase
     /**
      * Returns a stub JenkinsJob method
      *
-     * @return Repository
+     * @return DummyRepository
      */
     public function newRepository()
     {
         $projectName = new ProjectName('cpliakas/my-project');
-        $repository  = new Repository($projectName, new GitWrapper());
+        $repository  = new DummyRepository($projectName, new GitWrapper());
 
         $repository->setConfig('directory', './build/tmp/my-project');
 

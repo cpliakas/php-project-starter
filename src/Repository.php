@@ -77,7 +77,7 @@ class Repository implements ConfigurableInterface, CreatableInterface
     public function create()
     {
         $dir = $this->getConfig('directory');
-        $git = $this->gitWrapper->init($dir);
+        $git = $this->initRepository($dir);
 
         $this->fs->mkdir($dir . '/src', 0755);
         $this->fs->mkdir($dir . '/test', 0755);
@@ -99,6 +99,16 @@ class Repository implements ConfigurableInterface, CreatableInterface
         $git->remote('add', 'origin', 'git@github.com:' . $this->projectName->get() . '.git');
 
         return true;
+    }
+
+    /**
+     * @param string
+     *
+     * @return \GitWrapper\GitWorkingCopy
+     */
+    protected function initRepository($dir)
+    {
+        return $this->gitWrapper->init($dir);
     }
 
     /**
