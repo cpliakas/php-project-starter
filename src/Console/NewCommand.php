@@ -2,9 +2,9 @@
 
 namespace Cpliakas\PhpProjectStarter\Console;
 
+use Cpliakas\PhpProjectStarter\JenkinsJob;
 use Cpliakas\PhpProjectStarter\ProjectName;
-use Cpliakas\PhpProjectStarter\ProjectStructure;
-use Guzzle\Http\Client;
+use Cpliakas\PhpProjectStarter\Repository;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,7 +13,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class NewCommand extends Command
 {
-
     protected function configure()
     {
         $this
@@ -45,7 +44,7 @@ class NewCommand extends Command
                'namespace',
                 null,
                InputOption::VALUE_REQUIRED,
-               'PSR-0 namespace, e.g. MyProject, SubProject\\MyComponent, defaults to the project name in came case'
+               'PSR-4 namespace, e.g. MyProject, SubProject\\MyComponent, defaults to the project name in came case'
             )
             ->addOption(
                'class',
@@ -63,7 +62,7 @@ class NewCommand extends Command
                'copyright-holders',
                 null,
                InputOption::VALUE_REQUIRED,
-               'Usually the vendor\'s real name, defaults to the Git\'s "user.name" configuration'
+               'Usually the vendor\'s real name, defaults to Git\'s "user.name" configuration'
             )
             ->addOption(
                'git-binary',
@@ -102,28 +101,27 @@ class NewCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $projectName = new ProjectName($input->getArgument('project-name'));
-        $gitWrapper = new GitWrapper($input->getOption('git-binary'));
-        $projectStructure = new ProjectStructure($projectName, $gitWrapper);
+        $gitWrapper  = new GitWrapper($input->getOption('git-binary'));
+
+        $repository = new Repository($projectName, $gitWrapper);
+        $repository
+            ->setConfig('directory'        , $input->getArgument('directory'))
+            ->setConfig('label'            , $input->getOption('label'))
+            ->setConfig('description'      , $input->getOption('description'))
+            ->setConfig('copyright.year'   , $input->getOption('copyright-year'))
+            ->setConfig('copyright.holders', $input->getOption('copyright-holders'))
+            ->setConfig('namespace',         $input->getOption('namespace'))
+            ->setConfig('class',             $input->getOption('class'))
+        ;
 
         if (!$input->getOption('no-repo')) {
-            $projectStructure->create();
+            $repository->create();
         }
 
-        // Create the Jenkins job if a URL is passed.
         if ($jenkinsUrl = $input->getOption('jenkins-url')) {
-
-            $client = new Client($jenkinsUrl);
-            if ($input->getOption('no-ssl-verification')) {
-                $client->setSslVerification(false, false);
-            }
-
-            $configXml = file_get_contents(__DIR__ . '/../../../jenkins/config.xml');
-            $job = str_replace('{{ project.name }}', $projectName->get(), $configXml);
-
-            $headers = array('Content-Type' => 'text/xml');
-            $client->post($jenkinsUrl . '/createItem', $headers, $job, array(
-                'query' => array('name' => $projectName->getName())
-            ))->send();
+            $jenkinsJob = new JenkinsJob($projectName, $repository, $jenkinsUrl);
+            $jenkinsJob->sslVerification(!($input->getOption('no-ssl-verification')));
+            $jenkinsJob->create();
         }
     }
 }
