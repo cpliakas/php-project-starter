@@ -12,7 +12,7 @@ development tools. The goals of this application are to guide developers towards
 best practices and get them from zero-to-CI in seconds.
 
 The applications created by this tool have an opinionated directory structure,
-build system, and pre-configured set of services connections. Refer to the
+build system, and pre-configured set of service connections. Refer to the
 [Tools And Conventions](#tools-and-conventions) and [Directory Structure](#directory-structure)
 sections below for more details.
 
