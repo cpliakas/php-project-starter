@@ -75,9 +75,11 @@ class ProjectName
     public function getNameCamelCased()
     {
         $parts = preg_split('/[_.-]/', $this->name);
+
         array_walk($parts, function (&$value, $key) {
             $value = ucfirst($value);
         });
-        $option = join('', $parts);
+
+        return join('', $parts);
     }
 }

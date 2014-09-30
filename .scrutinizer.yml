@@ -17,7 +17,7 @@ tools:
     php_cs_fixer:
         config: { level: psr2 }
     external_code_coverage:
-        runs: 4
+        runs: 3
         timeout: 600
     sensiolabs_security_checker: true
 

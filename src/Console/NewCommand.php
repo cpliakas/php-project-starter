@@ -5,6 +5,7 @@ namespace Cpliakas\PhpProjectStarter\Console;
 use Cpliakas\PhpProjectStarter\JenkinsJob;
 use Cpliakas\PhpProjectStarter\ProjectName;
 use Cpliakas\PhpProjectStarter\Repository;
+use GitWrapper\GitWrapper;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

@@ -53,7 +53,7 @@
     <exec executable="php">
       <arg value="${builddir}/composer.phar"/>
       <arg value="update"/>
-      <arg value="--no-dev"/>
+      <arg value="--prefer-dist"/>
     </exec>
   </target>
 
@@ -79,8 +79,17 @@
   </target>
 
   <target name="phar" depends="composer,box-check,box-download,box-update" description="Build phar">
+    <exec executable="php">
+      <arg value="${builddir}/composer.phar"/>
+      <arg value="install"/>
+      <arg value="--no-dev"/>
+    </exec>
     <exec executable="${builddir}/box.phar">
       <arg value="build"/>
+    </exec>
+    <exec executable="php">
+      <arg value="${builddir}/composer.phar"/>
+      <arg value="install"/>
     </exec>
   </target>
 
