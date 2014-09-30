@@ -60,8 +60,7 @@ class JenkinsJob implements ConfigurableInterface, CreatableInterface
             $client->setSslVerification(false, false);
         }
 
-        $configXml = file_get_contents(__DIR__ . '/../../../jenkins/config.xml');
-        $job = str_replace('{{ project.name }}', $this->projectName->get(), $configXml);
+        $job = str_replace('{{ project.name }}', $this->projectName->get(), $this->getConfigTemplate());
 
         $headers = [
             'Content-Type' => 'text/xml'
@@ -73,5 +72,13 @@ class JenkinsJob implements ConfigurableInterface, CreatableInterface
 
         $client->post($this->url . '/createItem', $headers, $job, $options)->send();
         return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getConfigTemplate()
+    {
+        return file_get_contents(__DIR__ . '/../jenkins/config.xml');
     }
 }
