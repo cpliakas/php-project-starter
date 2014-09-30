@@ -5,9 +5,9 @@
         "bin/php-project.php",
         "jenkins/config.xml",
         "LICENSE",
-        "template/.coveralls.yml",
         "template/.editorconfig",
         "template/.gitignore",
+        "template/.scrutinizer.yml",
         "template/.travis.yml",
         "template/LICENSE",
         "template/README.md",
@@ -19,8 +19,7 @@
         "template/test/bootstrap.php",
         "template/test/DummyTest.php",
         "vendor/cpliakas/git-wrapper/bin/git-ssh-wrapper.sh",
-        "vendor/guzzle/guzzle/src/Guzzle/Http/Resources/cacert.pem",
-        "vendor/guzzle/guzzle/src/Guzzle/Http/Resources/cacert.pem.md5"
+        "vendor/guzzle/guzzle/src/Guzzle/Http/Resources/cacert.pem"
     ],
     "finder": [
         {

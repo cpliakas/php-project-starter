@@ -1,0 +1,23 @@
+checks:
+    php:
+        code_rating: true
+        duplication: true
+
+filter:
+    paths:
+        - src/*
+
+tools:
+    external_code_coverage:
+        runs: 4
+        timeout: 600
+    php_analyzer: true
+    php_cs_fixer:
+        config: { level: psr2 }
+    php_pdepend: true
+    php_mess_detector:
+        config:
+            ruleset: ./phpmd.xml
+    php_sim: true
+    sensiolabs_security_checker: true
+
