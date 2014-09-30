@@ -12,9 +12,9 @@ development tools. The goals of this application are to guide developers towards
 best practices and get them from zero-to-CI in seconds.
 
 The applications created by this tool have an opinionated directory structure,
-build system, and pre-configured set of service connections. Refer to the
-[Tools And Conventions](#tools-and-conventions) and [Directory Structure](#directory-structure)
-sections below for more details.
+build system, and pre-configured set of service connections with badges ready to
+go. Refer to the [Tools And Conventions](#tools-and-conventions) and
+[Directory Structure](#directory-structure) sections below for more details.
 
 See the examples below for repositories created by the PHP Project Starter tool:
 
@@ -25,8 +25,7 @@ See the examples below for repositories created by the PHP Project Starter tool:
 
 #### Install The Command Line Tool
 
-Visit [https://github.com/cpliakas/php-project-starter/releases/latest](https://github.com/cpliakas/php-project-starter/releases/latest)
-and download the `php-project.phar` file.
+Download `php-project.phar` from [https://github.com/cpliakas/php-project-starter/releases/latest](https://github.com/cpliakas/php-project-starter/releases/latest)
 
 Run `php php-project.phar --help` to see all options supported by the command
 line tool and ensure that installation succeeded.
