@@ -31,6 +31,7 @@ class RepositoryTest extends \PHPUnit_Framework_TestCase
         $repository  = new DummyRepository($projectName, new GitWrapper());
 
         $repository->setConfig('directory', './build/tmp/my-project');
+        $repository->setConfig('copyright.holders', 'Chris Pliakas');
 
         return $repository;
     }
