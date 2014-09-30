@@ -1,6 +1,7 @@
 # PHP Project Starter
 
 [![Build Status](https://travis-ci.org/cpliakas/php-project-starter.svg?branch=master)](https://travis-ci.org/cpliakas/php-project-starter)
+[![Code Coverage](https://scrutinizer-ci.com/g/cpliakas/php-project-starter/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cpliakas/php-project-starter/?branch=master)
 [![HHVM Status](http://hhvm.h4cc.de/badge/cpliakas/php-project-starter.svg)](http://hhvm.h4cc.de/package/cpliakas/php-project-starter)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cpliakas/php-project-starter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cpliakas/php-project-starter/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/cpliakas/php-project-starter/v/stable.svg)](https://packagist.org/packages/cpliakas/php-project-starter)

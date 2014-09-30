@@ -9,12 +9,33 @@ use GitWrapper\GitWrapper;
 
 class JenkinsJobTest extends \PHPUnit_Framework_TestCase
 {
-    public function testGetConfigTemplate()
+    /**
+     * Returns a stub JenkinsJob method
+     *
+     * @return JenkinsJob
+     */
+    public function newJenkinsJob()
     {
         $projectName = new ProjectName('cpliakas/test');
         $repository  = new Repository($projectName, new GitWrapper());
-        $jenkinsJob  = new JenkinsJob($projectName, $repository, 'http://example.com');
+        return new JenkinsJob($projectName, $repository, 'http://example.com');
+    }
 
-        $this->assertNotEmpty($jenkinsJob->getConfigTemplate());
+    public function testGetConfigTemplate()
+    {
+        $this->assertNotEmpty($this->newJenkinsJob()->getConfigTemplate());
+    }
+
+    public function testDefaultSslVerification()
+    {
+        $this->assertTrue($this->newJenkinsJob()->getSslVerification());
+    }
+
+    public function testSetSslVerification()
+    {
+        $jenkinsJob = $this->newJenkinsJob();
+        $jenkinsJob->sslVerification(false);
+
+        $this->assertFalse($jenkinsJob->getSslVerification());
     }
 }

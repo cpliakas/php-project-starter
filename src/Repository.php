@@ -155,21 +155,6 @@ class Repository implements ConfigurableInterface, CreatableInterface
     }
 
     /**
-     * @param string $dir
-     *
-     * @throws IOException
-     */
-    public function mkdir($dir)
-    {
-        if ($this->fs->exists($dir)) {
-            $message = sprintf('Failed to create "%s" because the directory already exists', $dir);
-            throw new IOException($message, 0, null, $dir);
-        }
-
-        $this->fs->mkdir($dir, 0755);
-    }
-
-    /**
      * Copies a file from the template to the destination directory, replacing
      * all of the template variables.
      *
@@ -181,7 +166,7 @@ class Repository implements ConfigurableInterface, CreatableInterface
      */
     public function copy($filename, $dir)
     {
-        $filepath = __DIR__ . '/../../../template/' . $filename;
+        $filepath = __DIR__ . '/../template/' . $filename;
         if (!is_file($filepath)) {
             $message = sprintf('Failed to copy "%s" because file does not exist.', $filepath);
             throw new FileNotFoundException($message, 0, null, $filepath);

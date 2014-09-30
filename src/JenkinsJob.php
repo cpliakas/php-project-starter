@@ -24,7 +24,7 @@ class JenkinsJob implements ConfigurableInterface, CreatableInterface
     /**
      * @var boolean
      */
-    protected $sslVerification;
+    protected $sslVerification = true;
 
     /**
      * @param ProjectName $projectName
@@ -47,6 +47,14 @@ class JenkinsJob implements ConfigurableInterface, CreatableInterface
     {
         $this->sslVerification = (bool) $verify;
         return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getSslVerification()
+    {
+        return $this->sslVerification;
     }
 
     /**
