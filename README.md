@@ -1,7 +1,9 @@
 # PHP Project Starter
 
+[![Build Status](https://travis-ci.org/cpliakas/php-project-starter.svg?branch=master)](https://travis-ci.org/cpliakas/php-project-starter)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cpliakas/php-project-starter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cpliakas/php-project-starter/?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/cpliakas/php-project-starter/v/stable.png)](https://packagist.org/packages/cpliakas/php-project-starter)
+[![Latest Stable Version](https://poser.pugx.org/cpliakas/php-project-starter/v/stable.svg)](https://packagist.org/packages/cpliakas/php-project-starter)
+[![License](https://poser.pugx.org/cpliakas/php-project-starter/license.svg)](https://packagist.org/packages/cpliakas/php-project-starter)
 
 PHP Project Starter is a command line tool that allows developers to quickly
 create PHP applications that use common conventions and best-in-breed
