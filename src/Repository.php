@@ -3,6 +3,8 @@
 namespace Cpliakas\PhpProjectStarter;
 
 use GitWrapper\GitWrapper;
+use Symfony\Component\Filesystem\Exception\FileNotFoundException;
+use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 
 class Repository implements ConfigurableInterface, CreatableInterface
@@ -122,21 +124,6 @@ class Repository implements ConfigurableInterface, CreatableInterface
     }
 
     /**
-     * @param string $subject
-     *
-     * @return string
-     */
-    public function replace($subject)
-    {
-        $replacements = $this->getReplacements();
-
-        $search  = array_keys($replacements);
-        $replace = array_values($replacements);
-
-        return str_replace($search, $replace, $subject);
-    }
-
-    /**
      * @param string $filename
      *
      * @return Repository
@@ -170,16 +157,16 @@ class Repository implements ConfigurableInterface, CreatableInterface
     /**
      * @param string $dir
      *
-     * @throws \RuntimeException
-     * @throws \Symfony\Component\Filesystem\Exception\IOException
+     * @throws IOException
      */
     public function mkdir($dir)
     {
-        if (!$this->fs->exists($dir)) {
-            $this->fs->mkdir($dir, 0755);
-        } else {
-            throw new \RuntimeException('Directory exists: ' . $dir);
+        if ($this->fs->exists($dir)) {
+            $message = sprintf('Failed to create "%s" because the directory already exists', $dir);
+            throw new IOException($message, 0, null, $dir);
         }
+
+        $this->fs->mkdir($dir, 0755);
     }
 
     /**
@@ -189,24 +176,35 @@ class Repository implements ConfigurableInterface, CreatableInterface
      * @param string $filename
      * @param string $dir
      *
-     * @throws \RuntimeException
-     * @throws \Symfony\Component\Filesystem\Exception\IOException
+     * @throws IOException
+     * @throws FileNotFoundException
      */
     public function copy($filename, $dir)
     {
         $filepath = __DIR__ . '/../../../template/' . $filename;
         if (!is_file($filepath)) {
-            throw new \RuntimeException('File not found: ' . $filename);
+            $message = sprintf('Failed to copy "%s" because file does not exist.', $filepath);
+            throw new FileNotFoundException($message, 0, null, $filepath);
         }
 
-        // Replace the variables in the template
         $subject = file_get_contents($filepath);
         $filedata = $this->replace($subject);
 
-        // Write the file
-        $target = $dir . '/' . $filename;
-        $this->fs->touch($target);
-        $this->fs->chmod($target, 0644);
-        file_put_contents($target, $filedata);
+        $this->fs->dumpFile($dir . '/' . $filename, $filedata, 0644);
+    }
+
+    /**
+     * @param string $subject
+     *
+     * @return string
+     */
+    public function replace($subject)
+    {
+        $replacements = $this->getReplacements();
+
+        $search  = array_keys($replacements);
+        $replace = array_values($replacements);
+
+        return str_replace($search, $replace, $subject);
     }
 }
