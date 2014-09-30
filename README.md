@@ -110,6 +110,7 @@ to embrace.
 
 ### Code Quality
 
+* [PHP Analyzer](https://scrutinizer-ci.com/docs/tools/php/php-analyzer/)
 * [PHP Coding Standards Fixer](https://github.com/fabpot/PHP-CS-Fixer)
 * [PHP Depend](http://pdepend.org/)
 * [PHPCPD](https://github.com/sebastianbergmann/phpcpd)
