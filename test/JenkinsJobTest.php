@@ -18,7 +18,7 @@ class JenkinsJobTest extends \PHPUnit_Framework_TestCase
     {
         $projectName = new ProjectName('cpliakas/test');
         $repository  = new Repository($projectName, new GitWrapper());
-        return new JenkinsJob($projectName, $repository, 'http://example.com');
+        return new DummyJenkinsJob($projectName, $repository, 'http://example.com');
     }
 
     public function testGetConfigTemplate()
@@ -37,5 +37,18 @@ class JenkinsJobTest extends \PHPUnit_Framework_TestCase
         $jenkinsJob->sslVerification(false);
 
         $this->assertFalse($jenkinsJob->getSslVerification());
+    }
+
+    public function testCreateJenkinsJob()
+    {
+        $jenkinsJob = $this->newJenkinsJob();
+        $this->assertTrue($jenkinsJob->create());
+    }
+
+    public function testCreateJenkinsJobNoSslVerification()
+    {
+        $jenkinsJob = $this->newJenkinsJob();
+        $jenkinsJob->sslVerification(false);
+        $this->assertTrue($jenkinsJob->create());
     }
 }

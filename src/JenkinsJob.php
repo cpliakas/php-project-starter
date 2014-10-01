@@ -2,6 +2,8 @@
 
 namespace Cpliakas\PhpProjectStarter;
 
+use Guzzle\Http\Client;
+
 class JenkinsJob implements ConfigurableInterface, CreatableInterface
 {
     use Configuration;
@@ -58,11 +60,19 @@ class JenkinsJob implements ConfigurableInterface, CreatableInterface
     }
 
     /**
+     * @return Client
+     */
+    public function newHttpClient()
+    {
+        return new Client($this->url);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function create()
     {
-        $client = new Client($this->url);
+        $client = $this->newHttpClient();
 
         if (!$this->sslVerification) {
             $client->setSslVerification(false, false);
