@@ -104,8 +104,7 @@ class NewCommand extends Command
         $projectName = new ProjectName($input->getArgument('project-name'));
         $gitWrapper  = new GitWrapper($input->getOption('git-binary'));
 
-        $repository = new Repository($projectName, $gitWrapper);
-        $repository
+        $repository = $this->newRepository($projectName, $gitWrapper)
             ->setConfig('directory'        , $input->getArgument('directory'))
             ->setConfig('label'            , $input->getOption('label'))
             ->setConfig('description'      , $input->getOption('description'))
@@ -124,5 +123,16 @@ class NewCommand extends Command
             $jenkinsJob->sslVerification(!($input->getOption('no-ssl-verification')));
             $jenkinsJob->create();
         }
+    }
+
+    /**
+     * @param ProjectName $projectName
+     * @param GitWrapper $gitWrapper
+     *
+     * @return Repository
+     */
+    protected function newRepository(ProjectName $projectName, GitWrapper $gitWrapper)
+    {
+        return new Repository($projectName, $gitWrapper);
     }
 }

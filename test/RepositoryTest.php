@@ -13,7 +13,6 @@ class RepositoryTest extends \PHPUnit_Framework_TestCase
     public function tearDown()
     {
         parent::tearDown();
-
         $fs = new Filesystem();
         if ($fs->exists('./build/tmp')) {
             $fs->remove('./build/tmp');

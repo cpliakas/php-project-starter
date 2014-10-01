@@ -2,7 +2,6 @@
 
 namespace Cpliakas\PhpProjectStarter\Test;
 
-use Cpliakas\PhpProjectStarter\Console\NewCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Filesystem\Filesystem;
@@ -21,15 +20,16 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
     public function testNewCommandInputs()
     {
         $application = new Application();
-        $application->add(new NewCommand());
+        $application->add(new DummyNewCommand());
 
         $command = $application->find('new');
         $commandTester = new CommandTester($command);
 
         $input = [
-            'command' => $command->getName(),
-            'project-name' => 'cpliakas/my-project',
-            'directory' => './build/tmp/my-project'
+            'command'             => $command->getName(),
+            'project-name'        => 'cpliakas/my-project',
+            'directory'           => './build/tmp/my-project',
+            '--copyright-holders' => 'Chris Pliakas',
         ];
 
         $commandTester->execute($input);
