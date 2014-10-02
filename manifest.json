@@ -1,6 +1,12 @@
 [
     {
         "name": "php-project.phar",
+        "sha1": "afaa788a72b33a7bed6ed3e16ffee530b74d36b0",
+        "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.3.3/php-project.phar",
+        "version": "0.3.3"
+    },
+    {
+        "name": "php-project.phar",
         "sha1": "17cacb198c5af60ec4eb6f2366dd10981b490730",
         "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.3.2/php-project.phar",
         "version": "0.3.2"
