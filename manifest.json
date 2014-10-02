@@ -1,55 +1,55 @@
 [
     {
         "name": "php-project.phar",
-        "sha1": "6ead09f989b9a7b5a4133623a01f31da13626693",
+        "sha1": "17cacb198c5af60ec4eb6f2366dd10981b490730",
         "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.3.2/php-project.phar",
         "version": "0.3.2"
     },
     {
         "name": "php-project.phar",
-        "sha1": "e86c5ec91d2c8192bba0143f34181e315e4113ff",
+        "sha1": "e1b2ecc2969fad4225f26b58d130b21c2e2a915d",
         "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.3.1/php-project.phar",
         "version": "0.3.1"
     },
     {
         "name": "php-project.phar",
-        "sha1": "f0259fb3fca0fe94b79027c052842d8900e128e0",
+        "sha1": "2b89dc51c265903c8e2f9ec17938da28fea6cbe3",
         "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.3.0/php-project.phar",
         "version": "0.3.0"
     },
     {
         "name": "php-project.phar",
-        "sha1": "5046949f77fba0d63a51357e9ac28d4513ab2887",
+        "sha1": "05a3555490b1d86434b1cf2a0533cd57d79e117a",
         "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.2.8/php-project.phar",
         "version": "0.2.8"
     },
     {
         "name": "php-project.phar",
-        "sha1": "4f8ca1567b465119be37a11f2af72064454a302f",
+        "sha1": "598fa9b4972f6e7761bd6883b5e46ca02dbd97b6",
         "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.2.7/php-project.phar",
         "version": "0.2.7"
     },
     {
         "name": "php-project.phar",
-        "sha1": "8eb7035791209d910558a6bdc46a477c343c030d",
+        "sha1": "e54627866579f2824c415afad5a4e01de3ec0d54",
         "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.2.6/php-project.phar",
         "version": "0.2.6"
     },
     {
         "name": "php-project.phar",
-        "sha1": "64c061bd7aa506703d067ed1e93f15ec606286d9",
+        "sha1": "743ef33efe9eb11f91b3150af3728bbcdff7c8f4",
         "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.2.5/php-project.phar",
         "version": "0.2.5"
     },
     {
         "name": "php-project.phar",
-        "sha1": "7937faddb8cb4e28a355f2b201e1cfab417a2074",
+        "sha1": "f882500467dce37fb6f678c563bdab396ae75297",
         "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.2.4/php-project.phar",
         "version": "0.2.4"
     },
     {
         "name": "php-project.phar",
-        "sha1": "6fa3dcc834ad0e73775af2829427ff9547f4bf07",
+        "sha1": "81e86eb64936ba2bc1f2a0e9d094c6682f20c39c",
         "url": "https://github.com/cpliakas/php-project-starter/releases/download/0.2.3/php-project.phar",
         "version": "0.2.3"
     }
