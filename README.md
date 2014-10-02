@@ -66,6 +66,13 @@ git push -u origin master
   * Travis CI: Follow steps one and two of the [Getting Started](http://about.travis-ci.org/docs/user/getting-started/#Step-one%3A-Sign-in) documentation
   * Scritinizer CI: Follow the [Getting Started](https://scrutinizer-ci.com/docs/) documentation
 
+#### Keeping Up-To-Date
+
+Run the following command to update PHP Project Starter to the latest stable
+version:
+
+`php php-project.phar self-update`
+
 ## Using Apache Ant
 
 Running `ant` in the newly created project's root directory will download

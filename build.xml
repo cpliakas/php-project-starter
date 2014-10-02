@@ -83,6 +83,7 @@
       <arg value="${builddir}/composer.phar"/>
       <arg value="install"/>
       <arg value="--no-dev"/>
+      <arg value="--quiet"/>
     </exec>
     <exec executable="${builddir}/box.phar">
       <arg value="build"/>
@@ -90,6 +91,7 @@
     <exec executable="php">
       <arg value="${builddir}/composer.phar"/>
       <arg value="install"/>
+      <arg value="--quiet"/>
     </exec>
   </target>
 

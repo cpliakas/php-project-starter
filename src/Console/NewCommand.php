@@ -18,7 +18,7 @@ class NewCommand extends Command
     {
         $this
             ->setName('new')
-            ->setDescription('Start a new PHP project.')
+            ->setDescription('Start a new PHP project')
             ->addArgument(
                'project-name',
                InputArgument::REQUIRED,
