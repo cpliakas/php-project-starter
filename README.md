@@ -26,7 +26,15 @@ See the examples below for repositories created by the PHP Project Starter tool:
 
 #### Install The Command Line Tool
 
-Download `php-project.phar` from [https://github.com/cpliakas/php-project-starter/releases/latest](https://github.com/cpliakas/php-project-starter/releases/latest)
+##### Download Via Browser
+
+Download `php-project.phar` from [https://github.com/cpliakas/php-project-starter/releases/latest](https://github.com/cpliakas/php-project-starter/releases/latest),
+
+##### Download Via Command Line
+
+`curl -O http://www.chrispliakas.com/php-project-starter/download/latest/php-project.phar`
+
+##### Test It Out!
 
 Run `php php-project.phar --help` to see all options supported by the command
 line tool and ensure that installation succeeded.
