@@ -1,0 +1,1 @@
+Search.setIndex({envversion:42,terms:{index:[],search:[],modul:[],construct:0,content:[],under:0,page:[]},objtypes:{},objnames:{},filenames:["index"],titles:["PHP Project Starter"],objects:{},titleterms:{git:[],welcom:[],wrapper:[],project:0,indic:[],tabl:[],php:0,document:[],starter:0}})
